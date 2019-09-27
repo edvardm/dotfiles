@@ -43,7 +43,8 @@ Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move o
 Plug 'scrooloose/nerdtree'
 " Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-abolish'  " smart-case find/sub
@@ -56,9 +57,24 @@ Plug 'yaasita/edit-slack.vim'
 Plug 'Yggdroot/indentLine'  " show indentation line
 Plug 'zchee/deoplete-jedi'
 Plug 'tmhedberg/simpylfold'
-
+Plug 'dzeban/vim-log-syntax'
+Plug 'liuchengxu/vim-which-key'
+Plug 'elzr/vim-json'
+Plug 'cespare/vim-toml'
+Plug 'chrisbra/NrrwRgn'
+Plug 'stephpy/vim-yaml'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'habamax/vim-asciidoctor'
+" newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
 call plug#end()
+
+" Automatically reload when file changes
+au FocusGained * :checktime
+
+" Proper quote handling in this file
+autocmd FileType * setlocal formatoptions-=cro
 
 """ Python3 VirtualEnv
 let g:python3_host_prog = expand('~/.pyenv/shims/python3')
@@ -70,14 +86,15 @@ set so=5 " scroll context lines
 set relativenumber
 set t_Co=256
 color dracula
+set colorcolumn=80
 set termguicolors
 
 set cursorline
 " highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE guifg=DarkGrey guibg=NONE
 " highlight CursorLine   cterm=NONE ctermbg=236 ctermfg=white
 " highlight CursorLineNR ctermbg=DarkBlue ctermfg=yellow
-set guicursor=a:blinkon100
-highlight Pmenu guibg=white guifg=black gui=bold
+set guicursor=a:blinkon50
+highlight Pmenu guibg=gray guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
 highlight NonText guibg=none
@@ -90,12 +107,11 @@ filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
-" set list listchars=trail:»,tab:»-
+set listchars=tab:▸\ ,eol:¬  " for set list
 " set fillchars+=vert:\ 
 set wrap breakindent
 set number
 set title
-set autoread
 
 " set foldmethod=indent
 let g:SimpylFold_docstring_preview = 1
@@ -108,9 +124,29 @@ imap jj <Esc>
 
 " Limelight
 
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
 " Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guibg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.6
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 0
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 
 """ Bookmarks
 
@@ -151,22 +187,27 @@ autocmd BufLeave term://* stopinsert
 
 " Ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<c-tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" let g:UltiSnipsUsePythonVersion = 3
-" let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsSnippetDir = "/home/ed/src/snippets"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/dotfiles/nvim/UltiSnips"]
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
 " EasyAlign
 " xmap ga <Plug>(EasyAlign)
-" nmap ga <Plug>(EasyAlign)
+" nmap ga <Plug>(EasyAlign)"
 
-""" Easymotion
+" Python
+
+let g:pymode_python = 'python3'
+let g:pymode_virtualenv = 1
+
+" Easymotion
 
 " nmap s <Plug>(easymotion-s2)
 nmap s <Plug>(easymotion-t2)
@@ -222,10 +263,9 @@ endfunction
 
 """ Custom Mappings
 
-" nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 let mapleader=","
-nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
+" nmap <leader>q :NERDTreeToggle<CR>
 " nmap <leader>w :TagbarToggle<CR>
 " nmap <leader>ea :AirlineTheme
 nmap <leader>vi :vsp ~/.config/nvim/init.vim<CR>
@@ -238,17 +278,20 @@ nmap <leader>f :FZF<CR>
 " nmap <leader>go :Goyo<CR>
 " nmap <leader>h :RainbowParentheses!!<CR>
 nmap <leader>j :set filetype=journal<CR>
-nmap <leader>k :ColorToggle<CR>
-xmap <leader>l :Limelight!!<CR>
-" autocmd FileType python nmap <leader>y :0,$!~/.config/nvim/env/bin/python -m yapf<CR><C-o>
+" nmap <leader>k :ColorToggle<CR>
 autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
 nmap <leader>hn :HackerNews best<CR>J
-nmap <silent> <leader><leader> :noh<CR>
+nmap <silent> <leader><leader> :nohlsearch<CR>
 " nmap <Tab> :bnext<CR>
 " nmap <S-Tab> :bprevious<CR>
+nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 
-au VimLeave * set guicursor=a:hor10-blinkon1
+au VimLeave * set guicursor=a:hor100-blinkon1
 au FileType .vim setlocal fo-=c fo-=r fo-=o
+
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
 
 " Automatic dimming
 hi def Dim cterm=none ctermbg=none ctermfg=242
@@ -278,3 +321,4 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+

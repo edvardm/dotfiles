@@ -1,0 +1,49 @@
+[include]
+  path = ~/dotfiles/git_user
+
+[alias]
+  cb = checkout -b
+  co = checkout
+  cm = commit -m
+  br = branch
+  w = grep -w
+  gr = grep
+  cp = cherry-pick
+
+  forgot = commit --amend --no-edit
+  recent = branch --sort=-committerdate
+
+  puo='!git push --set-upstream origin "$(git-branch-current 2> /dev/null)"'
+
+[githooks "autoupdate"]
+  lastrun = 1553681835
+
+[log]
+  date = relative
+[format]
+  pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+[diff]
+  tool = meld
+  colorMoved = dimmed_zebra
+[difftool]
+  prompt = false
+[difftool "meld"]
+  cmd = meld "$LOCAL" "$REMOTE"
+
+[core]
+  excludesfile = /home/ed/.gitignore_global
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color]
+  ui = true
