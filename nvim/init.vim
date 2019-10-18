@@ -43,7 +43,7 @@ Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move o
 Plug 'scrooloose/nerdtree'
 " Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-expand-region'
@@ -66,6 +66,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'habamax/vim-asciidoctor'
+" Plug 'python-rope/ropevim'
 " newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
 call plug#end()
@@ -117,7 +118,7 @@ set title
 let g:SimpylFold_docstring_preview = 1
 set foldlevelstart=1
 
-set timeoutlen=300 ttimeoutlen=0
+set timeoutlen=200 ttimeoutlen=0
 imap jj <Esc>
 
 """ Plugin Configurations
@@ -281,7 +282,7 @@ nmap <leader>j :set filetype=journal<CR>
 " nmap <leader>k :ColorToggle<CR>
 autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
 nmap <leader>hn :HackerNews best<CR>J
-nmap <silent> <leader><leader> :nohlsearch<CR>
+nmap <silent> <leader>q :nohlsearch<CR>
 " nmap <Tab> :bnext<CR>
 " nmap <S-Tab> :bprevious<CR>
 nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
