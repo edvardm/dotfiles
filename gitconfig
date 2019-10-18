@@ -47,3 +47,5 @@
   whitespace = red reverse
 [color]
   ui = true
+[rerere]
+	enabled = true
