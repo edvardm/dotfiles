@@ -72,7 +72,7 @@
        "y": 0
     },
     "name": "ed@kessler: ~",
-    "percent": 0.52,
+    "percent": 0.48,
     "swallows": [
        {
        "class": "^Terminator$",
@@ -93,7 +93,7 @@
        "y": 1080
     },
     "name": "New Tab - Brave",
-    "percent": 0.28,
+    "percent": 0.32,
     "swallows": [
        {
        "class": "^Brave\\-browser$",
