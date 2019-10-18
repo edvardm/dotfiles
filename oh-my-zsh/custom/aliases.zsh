@@ -1,4 +1,4 @@
-unalias ggsup > /dev/null 2>&1 
+unalias ggsup > /dev/null 2>&1
 
 alias aG='alias | grep'
 alias agi='sudo apt install'
@@ -28,7 +28,8 @@ alias rg='\rg --smart-case' # ripgrep
 alias rgn='rg -N'
 alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias isodate='date --utc +%FT%TZ'
-alias l='\exa --git'
+alias ls='\exa --git --group-directories-first'
+alias l='ls'
 alias lint='pylint -j8 -rn -f colorized --disable=missing-docstring'
 alias la='l -a'
 alias ll='l -l'
@@ -48,7 +49,8 @@ alias vtime='/usr/bin/time -v'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias vimrc='nvim ~/.config/nvim/init.vim'
-alias wakeup='xrandr --output HDMI-2 --auto --right-of eDP-1'
+
+alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 
 local-ignore() {
 	echo $1 >> .git/info/exclude
@@ -79,17 +81,11 @@ pycook() {
 }
 
 
+# so that pip
 unalias pip > /dev/null 2>&1
 pip() {
-    pip3 $* && pyenv rehash
+    pip3 $* && (pyenv rehash > /dev/null 2>&1)
 }
 
-mv_dotfile() {
-  echo mv $1 ~/dotfiles/
-  echo ln -s parent($1) ~/dotfiles/$1
-}
-
-fsub() {
-    ambr $1 $2 && git commit -m "$1 -> $2"
-}
+viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
 
