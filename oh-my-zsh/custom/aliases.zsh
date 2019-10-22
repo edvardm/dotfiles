@@ -44,7 +44,8 @@ alias st='git status'
 alias test_cook='cook -f --no-input ~/code/python-cookiecutter/ makes_http_requests=n http_api=n && cd my_project'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
 alias vim="\nvim"
-alias view="\nvim -R"
+alias r="\nvim -R"
+alias vv='vim "$(fzf)"'
 alias vtime='/usr/bin/time -v'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
@@ -89,3 +90,6 @@ pip() {
 
 viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
 
+pyfix() {
+    autoflake $1 && isort $1 && black $1
+}
