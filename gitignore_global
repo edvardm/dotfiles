@@ -1,8 +1,16 @@
+# Python
 /.venv/
-/local/
-TODO.md
+
+/.direnv
 
 # Editors
 /.vscode
 /.vimsession
 /tags
+/tags.lock
+/tags.temp
+
+# Local stuff
+/local/
+/todo.md
+/TODO.md
