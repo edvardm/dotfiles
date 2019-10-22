@@ -21,6 +21,7 @@ Plug 'heavenshell/vim-pydocstring'
 Plug 'honza/vim-snippets'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -158,6 +159,8 @@ let g:limelight_priority = -1
 
 """ FZF
 let $FZF_DEFAULT_COMMAND='fd --type f'
+let g:fzf_buffers_jump = 1
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -207,6 +210,12 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/dotfiles/nvim/UltiSnips"]
 
 let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
+let g:pymode_options_max_line_length = 88
+autocmd FileType python set colorcolumn=88
+autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
+nmap <leader>iso :!isort %<CR><CR>
+nmap <leader>bla :!black %<CR><CR>
+nmap <leader>afl :!autoflake8 %<CR><CR>
 
 " Easymotion
 
