@@ -6,6 +6,7 @@
 # Editors
 /.vscode
 /.vimsession
+/.s
 /tags
 /tags.lock
 /tags.temp
