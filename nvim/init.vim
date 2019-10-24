@@ -1,5 +1,5 @@
 call plug#begin()
-" Plug 'adelarsq/vim-hackernews'
+Plug 'adelarsq/vim-hackernews'
 Plug 'rust-lang/rust.vim'
 Plug 'mboughaba/i3config.vim'
 " Plug 'wincent/ferret'
@@ -9,7 +9,7 @@ Plug 'uarun/vim-protobuf'
 Plug 'chrisbra/Colorizer' " colorize all hex codes
 Plug 'dag/vim2hs'
 Plug 'dbakker/vim-lint'
-Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'dracula/vim', {'as': 'dracula'}  " nice theme
 Plug 'tpope/vim-eunuch'
 Plug 'jremmen/vim-ripgrep'
 Plug 'easymotion/vim-easymotion'
@@ -22,7 +22,7 @@ Plug 'honza/vim-snippets'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Plug 'junegunn/vim-easy-align'
@@ -30,25 +30,24 @@ Plug 'junegunn/vim-journal'
 " Plug 'majutsushi/tagbar' " show outline of code, requires a ctag plugin
 " Plug 'MattesGroeger/vim-bookmarks'  " just use vanilla bookmarks
 Plug 'mechatroner/rainbow_csv'
-Plug 'metakirby5/codi.vim'
+Plug 'metakirby5/codi.vim'  " REPL/scratchpad
 Plug 'mhinz/vim-signify'  " show diff in gutter
 Plug 'mhinz/vim-startify'
-" Plug 'mindriot101/vim-yapf'
 Plug 'mtth/scratch.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'numirias/semshi'  " semanting highlighting
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move over them etc
 " Plug 'rafi/awesome-vim-colorschemes'
-" Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 " Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'  " causes sporadic errors
 Plug 'honza/vim-snippets'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-expand-region'
-Plug 'tpope/vim-abolish'  " smart-case find/sub
+Plug 'tpope/vim-abolish'  " smart-case find/sub (:S)
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
@@ -68,9 +67,15 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'habamax/vim-asciidoctor'
 " Plug 'python-rope/ropevim'
+" Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
+Plug 'machakann/vim-swap'
+" Plug 'dense-analysis/ale'  " must be configured to be convenient
 " newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
+
 call plug#end()
+
+" TODO: configure autoflake8 as Python formatter in addition to black
 
 " Automatically reload when file changes
 au FocusGained * :checktime
@@ -78,7 +83,7 @@ au FocusGained * :checktime
 " Proper quote handling in this file
 autocmd FileType * setlocal formatoptions-=cro
 
-""" Python3 VirtualEnv
+""" nvim VirtualEnv
 let g:python3_host_prog = expand('~/.pyenv/shims/python3')
 
 """ Coloring
@@ -101,10 +106,9 @@ highlight Comment gui=bold
 highlight Normal gui=none
 highlight NonText guibg=none
 
-""" Nerdtree-icons
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+" clear search highlights
+nnoremap ,, :nohl<CR>
 
-""" Other Configurations
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
@@ -115,7 +119,7 @@ set wrap breakindent
 set number
 set title
 
-" set foldmethod=indent
+set foldmethod=indent
 let g:SimpylFold_docstring_preview = 1
 set foldlevelstart=1
 
@@ -124,11 +128,13 @@ imap jj <Esc>
 
 """ Plugin Configurations
 
-" Limelight
+""" Nerdtree
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 
+""" Limelight
 " Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_ctermbg = '#404040'
+let g:limelight_conceal_ctermfg = '#a0a0a0'
 
 " Color name (:help gui-colors) or RGB color
 let g:limelight_conceal_guibg = 'DarkGray'
@@ -138,17 +144,20 @@ let g:limelight_conceal_guifg = '#777777'
 let g:limelight_default_coefficient = 0.6
 
 " Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 0
+let g:limelight_paragraph_span = 1
 
 " Beginning/end of paragraph
 "   When there's no empty line between the paragraphs
 "   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
+" let g:limelight_bop = '^\s'
+" let g:limelight_eop = '\ze\n^\s'
 
 " Highlighting priority (default: 10)
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
+
+nnoremap <silent> <Leader>ll :Limelight<CR>
+nnoremap <silent> <Leader>nl :Limelight!<CR>
 
 """ Bookmarks
 
@@ -157,15 +166,11 @@ let g:limelight_priority = -1
 " let g:bookmark_sign = '♥'
 " let g:bookmark_highlight_lines = 1
 
-""" FZF
-let $FZF_DEFAULT_COMMAND='fd --type f'
-let g:fzf_buffers_jump = 1
-nnoremap <silent> <Leader>b :Buffers<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
-" let g:NERDTreeDirArrowExpandable = '↠'
-" let g:NERDTreeDirArrowCollapsible = '↡'
+let g:NERDTreeDirArrowExpandable = '↠'
+let g:NERDTreeDirArrowCollapsible = '↡'
 
 " Airline
 let g:airlinetheme = 'onedark'
@@ -182,7 +187,7 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " Deoplete
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 " Disable documentation window
 " set completeopt-=preview
 
@@ -204,24 +209,28 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/dotfiles/nvim/UltiSnips"]
 
 " EasyAlign
 " xmap ga <Plug>(EasyAlign)
-" nmap ga <Plug>(EasyAlign)"
+" nnoremap ga <Plug>(EasyAlign)"
 
-" Python
-
+" Python (for Python 3+ only)
 let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
 let g:pymode_options_max_line_length = 88
 autocmd FileType python set colorcolumn=88
 autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
-nmap <leader>iso :!isort %<CR><CR>
-nmap <leader>bla :!black %<CR><CR>
-nmap <leader>afl :!autoflake8 %<CR><CR>
+nnoremap <leader>iso :!isort %<CR><CR>
+nnoremap <leader>bla :!black %<CR><CR>
+nnoremap <leader>afl :!autoflake8 %<CR><CR>
+
+function PyClean()
+     :!isort % <bar> :!autoflake % <bar> :!black %
+endfunction
+
+nnoremap <leader>pycl :exec PyClean()<CR><CR>
 
 " Easymotion
-
-" nmap s <Plug>(easymotion-s2)
-nmap s <Plug>(easymotion-t2)
-nmap <C-s> <Plug>(easymotion-overwin-f2)
+" nnoremap s <Plug>(easymotion-s2)
+nnoremap <leader>s <Plug>(easymotion-t2)
+nnoremap <leader>ss <Plug>(easymotion-overwin-f2)
 
 
 " indentLine
@@ -231,6 +240,9 @@ let g:indentLine_color_gui = '#363949'
 " TagBar
 let g:tagbar_width = 30
 " let g:tagbar_iconchars = ['↠', '↡']
+
+" Semshi
+let g:semshi#simplify_markup = v:false
 
 " fzf-vim
 let g:fzf_action = {
@@ -274,34 +286,34 @@ endfunction
 """ Custom Mappings
 
 let mapleader=","
-nmap \ <leader>q
-" nmap <leader>q :NERDTreeToggle<CR>
-" nmap <leader>w :TagbarToggle<CR>
-" nmap <leader>ea :AirlineTheme
-nmap <leader>vi :vsp ~/.config/nvim/init.vim<CR>
-nmap <leader>t :call TrimWhitespace()<CR>
-" nmap <leader>a gaip*
-" nmap <leader>s <C-w>s<C-w>j:terminal<CR>
-" nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
-" nmap <leader>d <Plug>(pydocstring)
-nmap <leader>f :FZF<CR>
-" nmap <leader>go :Goyo<CR>
-" nmap <leader>h :RainbowParentheses!!<CR>
-nmap <leader>j :set filetype=journal<CR>
-" nmap <leader>k :ColorToggle<CR>
-autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
-nmap <leader>hn :HackerNews best<CR>J
-nmap <silent> <leader>q :nohlsearch<CR>
-" nmap <Tab> :bnext<CR>
-" nmap <S-Tab> :bprevious<CR>
+nnoremap \ <leader>q
+" nnoremap <leader>q :NERDTreeToggle<CR>
+" nnoremap <leader>w :TagbarToggle<CR>
+" nnoremap <leader>ea :AirlineTheme
+nnoremap <leader>vi :vsp ~/.config/nvim/init.vim<CR>
+nnoremap <leader>t :call TrimWhitespace()<CR>
+" nnoremap <leader>a gaip*
+" nnoremap <leader>s <C-w>s<C-w>j:terminal<CR>
+" nnoremap <leader>vs <C-w>v<C-w>l:terminal<CR>
+" nnoremap <leader>d <Plug>(pydocstring)
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>go :Goyo<CR>
+" nnoremap <leader>h :RainbowParentheses!!<CR>
+nnoremap <leader>j :set filetype=journal<CR>
+" nnoremap <leader>k :ColorToggle<CR>
+nnoremap <leader>hn :HackerNews best<CR>J
+" nnoremap <Tab> :bnext<CR>
+" nnoremap <S-Tab> :bprevious<CR>
+
+" whichkey
 nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 
 au VimLeave * set guicursor=a:hor100-blinkon1
 au FileType .vim setlocal fo-=c fo-=r fo-=o
 
-nmap <Leader>l <Plug>(Limelight)
-xmap <Leader>l <Plug>(Limelight)
+" For commentary if needed:
+" autocmd FileType apache setlocal commentstring=#\ %s
 
 " Automatic dimming
 hi def Dim cterm=none ctermbg=none ctermfg=242
@@ -327,8 +339,21 @@ autocmd WinLeave * call s:DimInactiveWindow()
 " let g:autopep8_disable_show_diff=1
 " let g:autopep8_max_line_length=120
 
+" No cheating, ie. using arrows to move :)
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+""" FZF
+let $FZF_DEFAULT_COMMAND='fd --type f'
+let g:fzf_buffers_jump = 1
+nnoremap <silent> <Leader>b :Buffers<CR>
+
+""" Some macros
+
+" Python
+let @d="dt\"f]ct\": A,j0"  " assignment to dict entry, assumes double quotes
+
+
+""" End macros
