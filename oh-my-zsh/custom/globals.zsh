@@ -1,4 +1,4 @@
-alias -g G='| grep'
+alias -g G='| grep -E'
 alias -g P='| bat --color=always'
 
 alias -s db=sqlite3
