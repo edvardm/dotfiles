@@ -49,3 +49,5 @@
   ui = true
 [rerere]
 	enabled = true
+[merge]
+	tool = vimdiff
