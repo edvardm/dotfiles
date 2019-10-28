@@ -77,6 +77,10 @@ call plug#end()
 
 " TODO: configure autoflake8 as Python formatter in addition to black
 
+set hidden
+let mapleader=","
+nnoremap \ <leader>q
+
 " Automatically reload when file changes
 au FocusGained * :checktime
 
@@ -107,7 +111,7 @@ highlight Normal gui=none
 highlight NonText guibg=none
 
 " clear search highlights
-nnoremap ,, :nohl<CR>
+nnoremap <leader>cl :nohl<CR>
 
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
@@ -285,8 +289,6 @@ endfunction
 
 """ Custom Mappings
 
-let mapleader=","
-nnoremap \ <leader>q
 " nnoremap <leader>q :NERDTreeToggle<CR>
 " nnoremap <leader>w :TagbarToggle<CR>
 " nnoremap <leader>ea :AirlineTheme
