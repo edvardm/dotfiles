@@ -5,10 +5,10 @@ export ZSH="/home/ed/.oh-my-zsh"
 
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status todo virtualenv root_indicator \
-    background_jobs command_execution_time load time)
-ZSH_THEME="powerlevel9k/powerlevel9k"
+    command_execution_time load time)
+ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME="fino-edvardm"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -38,7 +38,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git gitfast git-extras fasd docker extract fasd gpg-agent pip pyenv
-    colored-man-pages redis-cli sudo kubectl zsh-syntax-highlighting)
+    colored-man-pages redis-cli zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,8 +61,8 @@ show_virtual_env() {
   fi
 }
 
-PS1='$(show_virtual_env)'$PS1
-fpath=(~/.zsh/tabcomplete $fpath)
+# PS1='$(show_virtual_env)'$PS1
+# fpath=(~/.zsh/tabcomplete $fpath)
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -99,4 +99,6 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
-
+setopt PROMPT_SUBST
+# Note the single quotes
+RPS1='${MODE_INDICATOR_PROMPT} ${vcs_info_msg_0_}'
