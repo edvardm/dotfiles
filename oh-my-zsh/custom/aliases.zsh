@@ -3,6 +3,7 @@ unalias ggsup > /dev/null 2>&1
 alias aG='alias | grep'
 alias agi='sudo apt install'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
+alias ci='cargo install'
 alias autoflake='\autoflake -r --in-place'
 alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
 alias charm='pycharm-community'
@@ -30,7 +31,10 @@ alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias isodate='date --utc +%FT%TZ'
 alias ls='\exa --git --group-directories-first'
 alias l='ls'
-alias lint='pylint -j8 -rn -f colorized --disable=missing-docstring'
+alias lt='ls  -l --sort=oldest'
+alias ltr='ls  -l --sort=newest'
+alias recent='lt --color=always| head -10'
+alias lint='pylint -f colorized --disable=missing-docstring'
 alias la='l -a'
 alias ll='l -l'
 alias lla='ll -a'
@@ -41,7 +45,7 @@ alias po='poetry'
 alias py='python3'
 alias pytest='\pytest --durations 3'
 alias st='git status'
-alias test_cook='cook -f --no-input ~/code/python-cookiecutter/ makes_http_requests=n http_api=n && cd my_project'
+alias test_cook='cook -f --no-input ~/code/python_cookiecutter/ makes_http_requests=n http_api=n && cd my_project'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
 alias vim="\nvim"
 alias r="\nvim -R"
@@ -50,6 +54,8 @@ alias vtime='/usr/bin/time -v'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias vimrc='nvim ~/.config/nvim/init.vim'
+alias vpn="openconnect --disable-ipv6 --verbose --user emajakari --authgroup NewSpace --no-dtls https://vpnfi.iceye.com/"
+
 
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 

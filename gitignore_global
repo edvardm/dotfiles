@@ -1,13 +1,9 @@
-# Python
-/.venv/
-
 /.direnv
 
 # Editors
 /.vscode
 /.idea
 /.vimsession
-/.s
 /tags
 /tags.lock
 /tags.temp
