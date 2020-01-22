@@ -1,6 +1,7 @@
 unalias ggsup > /dev/null 2>&1
 
 alias aG='alias | grep'
+alias todo='nvim ~/work.todo'
 alias agi='sudo apt install'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias ci='cargo install'
@@ -9,11 +10,12 @@ alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
 alias charm='pycharm-community'
 alias clipin='xclip -selection c'
 alias clipout='xclip -selection c -o'
+alias cat='bat --style="changes"'
 alias cook='cookiecutter'
 alias de='direnv edit'
 alias d='git diff'
 alias e='nvim'
-alias fzf="\fzf -m --preview 'bat --style=numbers --color=always {}'"
+alias fzf="\fzf -m --preview 'cat --color=always {}'"
 alias ft="\fzf-tmux -d 15"
 alias g='git'
 
@@ -29,6 +31,8 @@ alias rg='\rg --smart-case' # ripgrep
 alias rgn='rg -N'
 alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias isodate='date --utc +%FT%TZ'
+alias isodate_fs="isodate | sed 's/\://g'"
+alias suspend='systemctl suspend'
 alias ls='\exa --git --group-directories-first'
 alias l='ls'
 alias lt='ls  -l --sort=oldest'
@@ -41,6 +45,7 @@ alias lla='ll -a'
 alias pie='http'  # pie is so much easier to search from history
 alias ping='prettyping'
 alias req2poetry="sed 's/==\(.*\)/ = \"^\1\"/'"
+alias franz='killall franz ; \franz &'
 alias po='poetry'
 alias py='python3'
 alias pytest='\pytest --durations 3'

@@ -1,6 +1,5 @@
 # vi mode for zsh
 bindkey -v
-bindkey -M viins '//'  vi-cmd-mode
 
 # First we map the ? and / characters to incremental search w
 bindkey -M vicmd '?' history-incremental-search-backward
@@ -20,3 +19,6 @@ bindkey -M vicmd "^V" edit-command-line
 
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
+
+bindkey -M viins 'jj'  vi-cmd-mode
+bindkey '^j' vi-cmd-mode

@@ -28,7 +28,7 @@ Plug 'junegunn/vim-journal'
 Plug 'mechatroner/rainbow_csv'
 Plug 'mhinz/vim-signify'  " show diff in gutter
 Plug 'mhinz/vim-startify'
-Plug 'mtth/scratch.vim'
+" Plug 'mtth/scratch.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -42,6 +42,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-abolish'  " smart-case find/sub (:S)
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -56,26 +58,20 @@ Plug 'cespare/vim-toml'
 Plug 'chrisbra/NrrwRgn'
 Plug 'stephpy/vim-yaml'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'habamax/vim-asciidoctor'
 " Plug 'python-rope/ropevim'
 Plug 'machakann/vim-swap'
+" Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
+" Plug 'machakann/vim-swap'
 Plug 'dense-analysis/ale'  " must be configured to be convenient
-
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release --locked
-    else
-      !cargo build --release --locked --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'sotte/presenting.vim'  " simple vim presentations
+Plug 'inkarkat/vim-SyntaxRange'
 " newplug marker
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+" Plug 'aserebryakov/vim-todo-lists'
 Plug 'ryanoasis/vim-devicons' " must be last!
 
 call plug#end()
@@ -137,10 +133,17 @@ imap jj <Esc>
 
 """ Plugin Configurations
 
-""" Nerdtree
+" Presenting
+" au FileType md let b:presenting_slide_separator = '\v(^|\n)\-{4,}'
+
+" Markdown
+let g:markdown_syntax_conceal = 0
+let g:markdown_minlines = 500
+
+" Nerdtree
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
-""" Limelight
+" Limelight
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermbg = '#404040'
 let g:limelight_conceal_ctermfg = '#a0a0a0'
@@ -216,6 +219,9 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/dotfiles/nvim/UltiSnips"]
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
+" jedi/deoplete
+let g:jedi#completions_enabled = 0
+
 " Fugitive
 set diffopt=vertical
 nnoremap <leader>gd :Gdiffsplit!<CR>
@@ -244,9 +250,12 @@ nnoremap <leader>afl :!autoflake8 %<CR><CR>
 " ALE
 let g:ale_python_flake8_executable = 'python3'
 let g:ale_fixers = {'python': ['isort', 'add_blank_lines_for_python_control_statements', 'autopep8' ]}
+
+let g:ale_rust_cargo_include_features = 'clippy'
 let g:ale_python_mypy_options = "--python-version 3.7"
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 " Easymotion
 " nnoremap s <Plug>(easymotion-s2)
@@ -261,6 +270,9 @@ let g:indentLine_color_gui = '#363949'
 " TagBar
 let g:tagbar_width = 30
 " let g:tagbar_iconchars = ['↠', '↡']
+
+" vim-notes
+let g:notes_directories = ['~/Documents/Notes']
 
 " Semshi
 let g:semshi#simplify_markup = v:false

@@ -8,7 +8,7 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status todo virtualenv root_indicator \
     command_execution_time load time)
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME="fino-edvardm"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -21,7 +21,7 @@ export UPDATE_ZSH_DAYS=60
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -45,7 +45,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 # Local stuff that needs to be run before rest of the file
 test -f ~/.local/share/tmuxinator.zsh && source ~/.local/share/tmuxinator.zsh
-source ~/dotfiles/oh-my-zsh/vimkeys.zsh
+
+# vi keybindings
+# source ~/dotfiles/oh-my-zsh/vimkeys.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -68,7 +70,7 @@ show_virtual_env() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS="--ansi --bind='ctrl-o:execute(xdg-open {})'"
-export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,changes --line-range :300 {}'"
 
 # make zsh autocomplete Makefile targets
 setopt autolist
@@ -101,4 +103,9 @@ setopt HIST_BEEP
 
 setopt PROMPT_SUBST
 # Note the single quotes
-RPS1='${MODE_INDICATOR_PROMPT} ${vcs_info_msg_0_}'
+# RPS1='${MODE_INDICATOR_PROMPT} ${vcs_info_msg_0_}'
+
+source ~/.poetry/env
+eval "$(starship init zsh)"
+
+source /home/ed/.config/broot/launcher/bash/br
