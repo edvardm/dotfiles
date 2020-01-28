@@ -55,18 +55,36 @@ Plug 'elzr/vim-json'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/NrrwRgn'
 Plug 'stephpy/vim-yaml'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'habamax/vim-asciidoctor'
 " Plug 'python-rope/ropevim'
 Plug 'machakann/vim-swap'
-" Plug 'dense-analysis/ale'  " must be configured to be convenient
+Plug 'dense-analysis/ale'  " must be configured to be convenient
+
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
 
 call plug#end()
 
 " TODO: configure autoflake8 as Python formatter in addition to black
+
+set hidden
+let mapleader=","
+nnoremap \ <leader>q
 
 " Automatically reload when file changes
 au FocusGained * :checktime
@@ -98,7 +116,7 @@ highlight Normal gui=none
 highlight NonText guibg=none
 
 " clear search highlights
-nnoremap ,, :nohl<CR>
+nnoremap <leader>cl :nohl<CR>
 
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
@@ -198,6 +216,13 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/dotfiles/nvim/UltiSnips"]
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
+" Fugitive
+set diffopt=vertical
+nnoremap <leader>gd :Gdiffsplit!<CR>
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+nnoremap dg2 :diffget //2<CR>
+nnoremap dg3 :diffget //3<CR>
+
 " EasyAlign
 " xmap ga <Plug>(EasyAlign)
 " nnoremap ga <Plug>(EasyAlign)"
@@ -208,15 +233,20 @@ let g:pymode_virtualenv = 1
 let g:pymode_options_max_line_length = 88
 autocmd FileType python set colorcolumn=88
 autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
+autocmd FileType python iabbrev <buffer> dbg import pdb; pdb.set_trace()
+autocmd FileType python iabbrev <buffer> icr from icecream import ic
+autocmd FileType python iabbrev <buffer> pld # pylint: disable=
+
 nnoremap <leader>iso :!isort %<CR><CR>
 nnoremap <leader>bla :!black %<CR><CR>
 nnoremap <leader>afl :!autoflake8 %<CR><CR>
 
-function PyClean()
-     :!isort % <bar> :!autoflake % <bar> :!black %
-endfunction
-
-nnoremap <leader>pycl :exec PyClean()<CR><CR>
+" ALE
+let g:ale_python_flake8_executable = 'python3'
+let g:ale_fixers = {'python': ['isort', 'add_blank_lines_for_python_control_statements', 'autopep8' ]}
+let g:ale_python_mypy_options = "--python-version 3.7"
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Easymotion
 " nnoremap s <Plug>(easymotion-s2)
@@ -276,8 +306,6 @@ endfunction
 
 """ Custom Mappings
 
-let mapleader=","
-nnoremap \ <leader>q
 " nnoremap <leader>q :NERDTreeToggle<CR>
 " nnoremap <leader>w :TagbarToggle<CR>
 " nnoremap <leader>ea :AirlineTheme
@@ -348,3 +376,5 @@ let @d="dt\"f]ct\": A,j0"  " assignment to dict entry, assumes double quotes
 
 
 """ End macros
+
+
