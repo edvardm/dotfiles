@@ -2,9 +2,7 @@ call plug#begin()
 Plug 'adelarsq/vim-hackernews'
 Plug 'rust-lang/rust.vim'
 Plug 'mboughaba/i3config.vim'
-" Plug 'wincent/ferret'
 Plug 'aklt/plantuml-syntax'
-" Plug 'alvan/vim-closetag'
 Plug 'uarun/vim-protobuf'
 Plug 'chrisbra/Colorizer' " colorize all hex codes
 Plug 'dag/vim2hs'
@@ -16,7 +14,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'enomsg/vim-haskellConcealPlus'
 Plug 'fidian/hexmode'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'heavenshell/vim-pydocstring'
 Plug 'honza/vim-snippets'
 " Plug 'jiangmiao/auto-pairs'
@@ -25,12 +22,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
-" Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-journal'
 " Plug 'majutsushi/tagbar' " show outline of code, requires a ctag plugin
 " Plug 'MattesGroeger/vim-bookmarks'  " just use vanilla bookmarks
 Plug 'mechatroner/rainbow_csv'
-Plug 'metakirby5/codi.vim'  " REPL/scratchpad
 Plug 'mhinz/vim-signify'  " show diff in gutter
 Plug 'mhinz/vim-startify'
 Plug 'mtth/scratch.vim'
@@ -38,13 +33,11 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move over them etc
-" Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 " Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'SirVer/ultisnips'  " causes sporadic errors
 Plug 'honza/vim-snippets'
-Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-abolish'  " smart-case find/sub (:S)
 Plug 'tpope/vim-commentary'
@@ -54,7 +47,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yaasita/edit-slack.vim'
-Plug 'Yggdroot/indentLine'  " show indentation line
 Plug 'zchee/deoplete-jedi'
 Plug 'tmhedberg/simpylfold'
 Plug 'dzeban/vim-log-syntax'
@@ -67,7 +59,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'habamax/vim-asciidoctor'
 " Plug 'python-rope/ropevim'
-" Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
 Plug 'machakann/vim-swap'
 " Plug 'dense-analysis/ale'  " must be configured to be convenient
 " newplug marker
