@@ -45,11 +45,9 @@ alias ll='l -l'
 alias lla='ll -a'
 alias pie='http'  # pie is so much easier to search from history
 alias ping='prettyping'
-alias req2poetry="sed 's/==\(.*\)/ = \"^\1\"/'"
 alias franz='killall franz ; \franz &'
 alias po='poetry'
 alias py='python3'
-alias pytest='\pytest --durations 3'
 alias st='git status'
 alias test_cook='cook -f --no-input ~/code/python_cookiecutter/ makes_http_requests=n http_api=n && cd my_project'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
@@ -60,7 +58,6 @@ alias vtime='/usr/bin/time -v'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias vimrc='nvim ~/.config/nvim/init.vim'
-alias vpn="openconnect --disable-ipv6 --verbose --user emajakari --authgroup NewSpace --no-dtls https://vpnfi.iceye.com/"
 
 
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
@@ -102,6 +99,3 @@ pip() {
 
 viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
 
-pyfix() {
-    autoflake $1 && isort $1 && black $1
-}
