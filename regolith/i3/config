@@ -116,7 +116,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+P restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+F exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit regolith? This will end your X session.' -B 'Yes, exit' 'i3-msg exit'"
+bindsym $mod+Shift+F exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit regolith? This will end your X session.' -B 'Yes, exit' 'i3-msg exit'r"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -151,6 +151,7 @@ bar {
     # status_command i3status | dzen2
     status_command i3blocks
     position top
+    font pango:DejaVu Sans Mono 12
 }
 
 # Pulse Audio controls
@@ -180,4 +181,5 @@ bindsym $mod+Shift+m move workspace to output right
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/regolith/i3/ws-1.json'"
 exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.config/regolith/i3/ws-2.json'"
 
-
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/terminator'
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser'

@@ -1,30 +1,43 @@
 call plug#begin()
 Plug 'adelarsq/vim-hackernews'
-Plug 'rust-lang/rust.vim'
-Plug 'mboughaba/i3config.vim'
 Plug 'aklt/plantuml-syntax'
-Plug 'uarun/vim-protobuf'
+" Plug 'alvan/vim-closetag'
+Plug 'aserebryakov/vim-todo-lists'
+Plug 'cespare/vim-toml'
 Plug 'chrisbra/Colorizer' " colorize all hex codes
-Plug 'dag/vim2hs'
-Plug 'dbakker/vim-lint'
+Plug 'chrisbra/NrrwRgn'
+Plug 'davidhalter/jedi-vim'
+" Plug 'dbakker/vim-lint'
+Plug 'dense-analysis/ale'  " must be configured to be convenient
 Plug 'dracula/vim', {'as': 'dracula'}  " nice theme
-Plug 'tpope/vim-eunuch'
-Plug 'jremmen/vim-ripgrep'
-Plug 'easymotion/vim-easymotion'
+Plug 'dzeban/vim-log-syntax'
+" Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'elzr/vim-json'
 Plug 'enomsg/vim-haskellConcealPlus'
 Plug 'fidian/hexmode'
-Plug 'heavenshell/vim-pydocstring'
+Plug 'godlygeek/tabular'
+Plug 'habamax/vim-asciidoctor'
+" Plug 'heavenshell/vim-pydocstring'
 Plug 'honza/vim-snippets'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'inkarkat/vim-SyntaxRange'
 " Plug 'jiangmiao/auto-pairs'
+Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-journal'
+Plug 'liuchengxu/vim-which-key'
+" Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
+" Plug 'machakann/vim-swap'
+Plug 'machakann/vim-swap'
 " Plug 'majutsushi/tagbar' " show outline of code, requires a ctag plugin
 " Plug 'MattesGroeger/vim-bookmarks'  " just use vanilla bookmarks
+" Plug 'mattn/emmet-vim'
+Plug 'mboughaba/i3config.vim'
 Plug 'mechatroner/rainbow_csv'
 Plug 'mhinz/vim-signify'  " show diff in gutter
 Plug 'mhinz/vim-startify'
@@ -33,45 +46,41 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move over them etc
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'python-rope/ropevim'
+Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sevko/vim-nand2tetris-syntax'
+Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'SirVer/ultisnips'  " causes sporadic errors
-Plug 'honza/vim-snippets'
+Plug 'sotte/presenting.vim'  " simple vim presentations
+Plug 'stephpy/vim-yaml'
 Plug 'terryma/vim-expand-region'
+Plug 'tmhedberg/simpylfold'
 Plug 'tpope/vim-abolish'  " smart-case find/sub (:S)
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
+" Plug 'uarun/vim-protobuf'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'yaasita/edit-slack.vim'
-Plug 'zchee/deoplete-jedi'
-Plug 'tmhedberg/simpylfold'
-Plug 'dzeban/vim-log-syntax'
-Plug 'liuchengxu/vim-which-key'
-Plug 'elzr/vim-json'
-Plug 'cespare/vim-toml'
-Plug 'chrisbra/NrrwRgn'
-Plug 'stephpy/vim-yaml'
-Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'habamax/vim-asciidoctor'
-" Plug 'python-rope/ropevim'
-Plug 'machakann/vim-swap'
-" Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
-" Plug 'machakann/vim-swap'
-Plug 'dense-analysis/ale'  " must be configured to be convenient
-Plug 'sotte/presenting.vim'  " simple vim presentations
-Plug 'inkarkat/vim-SyntaxRange'
-" newplug marker
-Plug 'xolox/vim-notes'
+" Plug 'wincent/ferret'  " multi-file search
 Plug 'xolox/vim-misc'
-" Plug 'aserebryakov/vim-todo-lists'
+Plug 'xolox/vim-notes'
+" Plug 'yaasita/edit-slack.vim'
+" Plug 'Yggdroot/indentLine'  " show indentation line
+Plug 'zchee/deoplete-jedi'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
 
 call plug#end()
@@ -135,6 +144,11 @@ imap jj <Esc>
 
 " Presenting
 " au FileType md let b:presenting_slide_separator = '\v(^|\n)\-{4,}'
+
+"Emmet
+" let g:user_emmet_leader_key=';'
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
 
 " Markdown
 let g:markdown_syntax_conceal = 0
@@ -220,7 +234,7 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/dotfiles/nvim/UltiSnips"]
 " let g:UltiSnipsEditSplit="vertical"
 
 " jedi/deoplete
-let g:jedi#completions_enabled = 0
+let g:jedi#completions_enabled = 1
 
 " Fugitive
 set diffopt=vertical
@@ -232,7 +246,6 @@ nnoremap dg3 :diffget //3<CR>
 " EasyAlign
 " xmap ga <Plug>(EasyAlign)
 " nnoremap ga <Plug>(EasyAlign)"
-
 " Python (for Python 3+ only)
 let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
@@ -241,7 +254,11 @@ autocmd FileType python set colorcolumn=88
 autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
 autocmd FileType python iabbrev <buffer> dbg import pdb; pdb.set_trace()
 autocmd FileType python iabbrev <buffer> icr from icecream import ic
-autocmd FileType python iabbrev <buffer> pld # pylint: disable=
+func Eatchar(pat)
+   let c = nr2char(getchar(0))
+   return (c =~ a:pat) ? '' : c
+endfunc
+autocmd FileType python iabbrev <buffer> pld # pylint: disable=<Left>
 
 nnoremap <leader>iso :!isort %<CR><CR>
 nnoremap <leader>bla :!black %<CR><CR>
@@ -252,10 +269,28 @@ let g:ale_python_flake8_executable = 'python3'
 let g:ale_fixers = {'python': ['isort', 'add_blank_lines_for_python_control_statements', 'autopep8' ]}
 
 let g:ale_rust_cargo_include_features = 'clippy'
-let g:ale_python_mypy_options = "--python-version 3.7"
+let g:ale_python_mypy_options = "--python-version 3.7 --ignore-missing-imports"
+let g:ale_python_pylint_options = "--rcfile .pylintrc"
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+" Rust.vim
+" let g:autofmt_autosave = 1
+
+" LSP
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Easymotion
 " nnoremap s <Plug>(easymotion-s2)

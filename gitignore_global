@@ -4,6 +4,7 @@
 /.vscode
 /.idea
 /.vimsession
+/Session.vim
 /tags
 /tags.lock
 /tags.temp

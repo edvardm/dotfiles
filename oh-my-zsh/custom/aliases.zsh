@@ -10,7 +10,7 @@ alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
 alias charm='pycharm-community'
 alias clipin='xclip -selection c'
 alias clipout='xclip -selection c -o'
-alias cat='bat --style="changes"'
+alias cat='bat --style="changes" --color auto'
 alias cook='cookiecutter'
 alias de='direnv edit'
 alias d='git diff'
@@ -22,7 +22,7 @@ alias g='git'
 # TODO: move these to .gitconfig?
 alias gpfnv='git push --force-with-lease --no-verify'
 alias gpnv='git push --no-verify'
-alias grbmr='git rebase origin/master'
+alias grbmr='git pull --rebase origin master'
 alias gr='rg'
 alias gs='git stash'
 alias gsp='git stash push'
@@ -89,7 +89,7 @@ mcd() {
 }
 
 pycook() {
-  cookiecutter -f ~/code/python_cookiecutter project_name=$1
+  cookiecutter --no-input -f ~/code/python_cookiecutter "$*"
 }
 
 
