@@ -18,6 +18,7 @@ alias e='nvim'
 alias fzf="\fzf -m --preview 'cat --color=always {}'"
 alias ft="\fzf-tmux -d 15"
 alias g='git'
+alias tf=terraform
 
 # TODO: move these to .gitconfig?
 alias gpfnv='git push --force-with-lease --no-verify'
@@ -64,7 +65,7 @@ alias vpn="openconnect --disable-ipv6 --verbose --user emajakari --authgroup New
 
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 
-local-ignore() {
+ignore-local() {
 	echo $1 >> .git/info/exclude
 }
 
