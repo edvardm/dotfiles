@@ -14,5 +14,4 @@
 
 # Local stuff
 /local/
-/todo.md
-/TODO.md
+/*.todo
