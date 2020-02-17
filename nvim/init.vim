@@ -22,7 +22,6 @@ Plug 'habamax/vim-asciidoctor'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'inkarkat/vim-SyntaxRange'
-" Plug 'jiangmiao/auto-pairs'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -66,6 +65,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
+Plug 'tpope/repeat'
 " Plug 'uarun/vim-protobuf'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -80,10 +80,14 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'jiangmiao/auto-pairs'
 " newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
 
 call plug#end()
+
+" Autopairs
+au Filetype vim let b:AutoPairs = {"(": ")"}
 
 " TODO: configure autoflake8 as Python formatter in addition to black
 
@@ -92,7 +96,8 @@ let mapleader=","
 nnoremap \ <leader>q
 
 " Automatically reload when file changes
-au FocusGained * :checktime
+set autoread
+au FocusGained,BufEnter * :checktime
 
 " Proper quote handling in this file
 autocmd FileType * setlocal formatoptions-=cro
@@ -251,18 +256,18 @@ let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
 let g:pymode_options_max_line_length = 88
 autocmd FileType python set colorcolumn=88
-autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
+" autocmd FileType python noremap <buffer> <leader>y :call Autopep8()<CR>
 autocmd FileType python iabbrev <buffer> dbg import pdb; pdb.set_trace()
 autocmd FileType python iabbrev <buffer> icr from icecream import ic
 func Eatchar(pat)
    let c = nr2char(getchar(0))
    return (c =~ a:pat) ? '' : c
 endfunc
-autocmd FileType python iabbrev <buffer> pld # pylint: disable=<Left>
+autocmd FileType python iabbrev <buffer> pld # pylint: disable=
 
 nnoremap <leader>iso :!isort %<CR><CR>
 nnoremap <leader>bla :!black %<CR><CR>
-nnoremap <leader>afl :!autoflake8 %<CR><CR>
+nnoremap <leader>afl :!autoflake --remove-all-unused-imports %<CR><CR>
 
 " ALE
 let g:ale_python_flake8_executable = 'python3'
