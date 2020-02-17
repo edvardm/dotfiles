@@ -5,7 +5,7 @@ alias todo='nvim ~/work.todo'
 alias agi='sudo apt install'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias ci='cargo install'
-alias autoflake='\autoflake -r --in-place'
+alias autoflake='\autoflake -r --in-place --remove-all-unused-imports'
 alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
 alias charm='pycharm-community'
 alias clipin='xclip -selection c'
@@ -35,6 +35,7 @@ alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
 alias suspend='systemctl suspend'
 alias ls='\exa --git --group-directories-first'
+alias tree='ls --tree --git-ignore'
 alias l='ls'
 alias lt='ls  -l --sort=oldest'
 alias ltr='ls  -l --sort=newest'
@@ -58,6 +59,7 @@ alias vtime='/usr/bin/time -v'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias vimrc='nvim ~/.config/nvim/init.vim'
+alias rmpyc='fd -I __pycache__ | xargs  rm -r'
 
 
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
@@ -99,3 +101,15 @@ pip() {
 
 viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
 
+shell2task() {
+  name=${1//-/_}
+  cmd="${2}"
+  \cat <<EOF
+from invoke import task
+
+@task
+def $name(ctx):
+    """Description"""
+    ctx.run("$cmd")
+EOF
+}
