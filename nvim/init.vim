@@ -1,117 +1,25 @@
-call plug#begin()
-Plug 'adelarsq/vim-hackernews'
-Plug 'aklt/plantuml-syntax'
-" Plug 'alvan/vim-closetag'
-Plug 'aserebryakov/vim-todo-lists'
-Plug 'cespare/vim-toml'
-Plug 'chrisbra/Colorizer' " colorize all hex codes
-Plug 'chrisbra/NrrwRgn'
-Plug 'davidhalter/jedi-vim'
-" Plug 'dbakker/vim-lint'
-Plug 'dense-analysis/ale'  " must be configured to be convenient
-Plug 'dracula/vim', {'as': 'dracula'}  " nice theme
-Plug 'dzeban/vim-log-syntax'
-" Plug 'easymotion/vim-easymotion'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'elzr/vim-json'
-Plug 'enomsg/vim-haskellConcealPlus'
-Plug 'fidian/hexmode'
-Plug 'godlygeek/tabular'
-Plug 'habamax/vim-asciidoctor'
-" Plug 'heavenshell/vim-pydocstring'
-Plug 'honza/vim-snippets'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'inkarkat/vim-SyntaxRange'
-Plug 'jremmen/vim-ripgrep'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'junegunn/vim-journal'
-Plug 'liuchengxu/vim-which-key'
-" Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
-" Plug 'machakann/vim-swap'
-Plug 'machakann/vim-swap'
-" Plug 'majutsushi/tagbar' " show outline of code, requires a ctag plugin
-" Plug 'MattesGroeger/vim-bookmarks'  " just use vanilla bookmarks
-" Plug 'mattn/emmet-vim'
-Plug 'mboughaba/i3config.vim'
-Plug 'mechatroner/rainbow_csv'
-Plug 'mhinz/vim-signify'  " show diff in gutter
-Plug 'mhinz/vim-startify'
-" Plug 'mtth/scratch.vim'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move over them etc
-" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-" Plug 'python-rope/ropevim'
-Plug 'racer-rust/vim-racer'
-Plug 'scrooloose/nerdtree'
-Plug 'sevko/vim-nand2tetris-syntax'
-Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'SirVer/ultisnips'  " causes sporadic errors
-Plug 'sotte/presenting.vim'  " simple vim presentations
-Plug 'stephpy/vim-yaml'
-Plug 'terryma/vim-expand-region'
-Plug 'tmhedberg/simpylfold'
-Plug 'tpope/vim-abolish'  " smart-case find/sub (:S)
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-surround'
-Plug 'tpope/repeat'
-" Plug 'uarun/vim-protobuf'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-" Plug 'wincent/ferret'  " multi-file search
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-" Plug 'yaasita/edit-slack.vim'
-" Plug 'Yggdroot/indentLine'  " show indentation line
-Plug 'zchee/deoplete-jedi'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'jiangmiao/auto-pairs'
-" newplug marker
-Plug 'ryanoasis/vim-devicons' " must be last!
+source ~/dotfiles/nvim/plugins.vim
 
-call plug#end()
+syntax on
+filetype plugin indent on
+color dracula
 
-" Autopairs
-au Filetype vim let b:AutoPairs = {"(": ")"}
-
-" TODO: configure autoflake8 as Python formatter in addition to black
-
-set hidden
 let mapleader=","
 nnoremap \ <leader>q
+
+" switch 0 and ^
+nnoremap ^ 0
+nnoremap 0 ^
 
 " Automatically reload when file changes
 set autoread
 au FocusGained,BufEnter * :checktime
 
-" Proper quote handling in this file
-autocmd FileType * setlocal formatoptions-=cro
-
-""" nvim VirtualEnv
-let g:python3_host_prog = expand('~/.pyenv/shims/python3')
-
-""" Coloring
-syntax on
-
+set undolevels=512
+set hidden
 set so=5 " scroll context lines
 set relativenumber
 set t_Co=256
-color dracula
 set colorcolumn=80
 set termguicolors
 
@@ -120,32 +28,41 @@ set cursorline
 " highlight CursorLine   cterm=NONE ctermbg=236 ctermfg=white
 " highlight CursorLineNR ctermbg=DarkBlue ctermfg=yellow
 set guicursor=a:blinkon50
-highlight Pmenu guibg=gray guifg=black gui=bold
+highlight Pmenu guibg=DarkGray guifg=black gui=bold
+highlight PmenuSel guibg=blue guifg=Yellow gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
 highlight NonText guibg=none
 
-" clear search highlights
-nnoremap <leader>cl :nohl<CR>
-
-filetype plugin indent on
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
-set incsearch ignorecase smartcase hlsearch
-set ruler laststatus=2 showcmd showmode
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
+set autoindent
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set ruler
+set laststatus=2
+set showcmd
+set showmode
 set listchars=tab:▸\ ,eol:¬  " for set list
 " set fillchars+=vert:\ 
-set wrap breakindent
+set wrap
 set number
 set title
+set tags=.tags,TAGS,tags
 
 set foldmethod=indent
 let g:SimpylFold_docstring_preview = 1
 set foldlevelstart=1
 
 set timeoutlen=200 ttimeoutlen=0
+set inccommand=split
 imap jj <Esc>
 
-""" Plugin Configurations
+nnoremap <leader>cl :nohl<CR>
+
+"""r search results nvim VirtualEnv
+let g:python3_host_prog = expand('~/.pyenv/shims/python3')
 
 " Presenting
 " au FileType md let b:presenting_slide_separator = '\v(^|\n)\-{4,}'
@@ -248,6 +165,9 @@ autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 nnoremap dg2 :diffget //2<CR>
 nnoremap dg3 :diffget //3<CR>
 
+" Autopairs
+au Filetype vim let b:AutoPairs = {"(": ")"}
+
 " EasyAlign
 " xmap ga <Plug>(EasyAlign)
 " nnoremap ga <Plug>(EasyAlign)"
@@ -299,8 +219,8 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Easymotion
 " nnoremap s <Plug>(easymotion-s2)
-nnoremap <leader>s <Plug>(easymotion-t2)
-nnoremap <leader>ss <Plug>(easymotion-overwin-f2)
+" nnoremap <leader>s <Plug>(easymotion-t2)
+" nnoremap <leader>ss <Plug>(easymotion-overwin-f2)
 
 
 " indentLine
@@ -362,6 +282,7 @@ endfunction
 " nnoremap <leader>w :TagbarToggle<CR>
 " nnoremap <leader>ea :AirlineTheme
 nnoremap <leader>vi :vsp ~/.config/nvim/init.vim<CR>
+nnoremap <leader>vp :vsp ~/.config/nvim/plugins.vim<CR>
 nnoremap <leader>t :call TrimWhitespace()<CR>
 " nnoremap <leader>a gaip*
 " nnoremap <leader>s <C-w>s<C-w>j:terminal<CR>
@@ -369,7 +290,7 @@ nnoremap <leader>t :call TrimWhitespace()<CR>
 " nnoremap <leader>d <Plug>(pydocstring)
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>go :Goyo<CR>
-" nnoremap <leader>h :RainbowParentheses!!<CR>
+nnoremap <leader>h :RainbowParentheses!!<CR>
 nnoremap <leader>j :set filetype=journal<CR>
 " nnoremap <leader>k :ColorToggle<CR>
 nnoremap <leader>hn :HackerNews best<CR>J
@@ -382,9 +303,6 @@ nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 
 au VimLeave * set guicursor=a:hor100-blinkon1
 au FileType .vim setlocal fo-=c fo-=r fo-=o
-
-" For commentary if needed:
-" autocmd FileType apache setlocal commentstring=#\ %s
 
 " Automatic dimming
 hi def Dim cterm=none ctermbg=none ctermfg=242
@@ -421,12 +339,8 @@ let $FZF_DEFAULT_COMMAND='fd --type f'
 let g:fzf_buffers_jump = 1
 nnoremap <silent> <Leader>b :Buffers<CR>
 
-""" Some macros
-
-" Python
-let @d="dt\"f]ct\": A,j0"  " assignment to dict entry, assumes double quotes
+""" Macros
 
 
 """ End macros
-
 

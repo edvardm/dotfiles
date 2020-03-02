@@ -5,13 +5,13 @@
 /.idea
 /.vimsession
 /Session.vim
-/tags
-/tags.lock
-/tags.temp
+/.tags*
 
 # Python
 .mypy_cache/
+.py[cod]
+__pycache__/
 
 # Local stuff
-/local/
+local/
 /*.todo

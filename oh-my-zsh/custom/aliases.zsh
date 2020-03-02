@@ -1,7 +1,7 @@
 unalias ggsup > /dev/null 2>&1
 
 alias aG='alias | grep'
-alias todo='nvim ~/work.todo'
+alias todo='nvim -n ~/work.todo'
 alias agi='sudo apt install'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias ci='cargo install'
@@ -34,6 +34,8 @@ alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
 alias suspend='systemctl suspend'
+alias dc='docker-compose'
+alias cleanswp='rm -rf ~/.local/share/nvim/*.swp'
 alias ls='\exa --git --group-directories-first'
 alias tree='ls --tree --git-ignore'
 alias l='ls'
@@ -58,6 +60,7 @@ alias vv='vim "$(fzf)"'
 alias vtime='/usr/bin/time -v'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
+alias lzd='lazydocker'
 alias vimrc='nvim ~/.config/nvim/init.vim'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
 
