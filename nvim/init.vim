@@ -55,7 +55,7 @@ set foldmethod=indent
 let g:SimpylFold_docstring_preview = 1
 set foldlevelstart=1
 
-set timeoutlen=200 ttimeoutlen=0
+set timeoutlen=500 ttimeoutlen=0
 set inccommand=split
 imap jj <Esc>
 

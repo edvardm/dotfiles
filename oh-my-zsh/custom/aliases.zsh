@@ -19,6 +19,8 @@ alias fzf="\fzf -m --preview 'cat --color=always {}'"
 alias ft="\fzf-tmux -d 15"
 alias g='git'
 alias tf=terraform
+alias dk='docker'
+alias drun='docker run -it --rm'
 
 # TODO: move these to .gitconfig?
 alias gpfnv='git push --force-with-lease --no-verify'
