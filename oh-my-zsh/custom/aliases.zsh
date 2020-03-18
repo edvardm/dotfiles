@@ -7,7 +7,6 @@ alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias ci='cargo install'
 alias autoflake='\autoflake -r --in-place --remove-all-unused-imports'
 alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
-alias charm='pycharm-community'
 alias clipin='xclip -selection c'
 alias clipout='xclip -selection c -o'
 alias cat='bat --style="changes" --color auto'
@@ -117,4 +116,13 @@ def $name(ctx):
     """Description"""
     ctx.run("$cmd")
 EOF
+}
+
+disableipv6() {
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+}
+
+charm() {
+    /usr/local/share/pycharm/bin/pycharm.sh $* &!
 }
