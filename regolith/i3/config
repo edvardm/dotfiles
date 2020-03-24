@@ -165,18 +165,37 @@ bar {
 
 # gaps, borders and stuff
 # for_window [class="^.*"] border pixel 3
-default_border pixel 3
+default_border pixel 4
 smart_gaps on
-gaps inner 2
-gaps outer 2
+gaps inner 16
+gaps outer 4
 # set client.focused.color.border "#00ff36"
 
 # change gaps interactively
 bindsym $mod+minus gaps inner current minus 6
 bindsym $mod+plus gaps inner current plus 6
 
+set $laptop_disp "eDP-1"
+set $main_disp "HDMI-2"
+workspace $ws1 output $laptop_disp
+workspace $ws3 output $laptop_disp
+workspace $ws5 output $laptop_disp
+workspace $ws7 output $laptop_disp
+workspace $ws9 output $laptop_disp
+workspace $ws2 output $main_disp
+workspace $ws4 output $main_disp
+workspace $ws6 output $main_disp
+workspace $ws8 output $main_disp
+#workspace $ws0 aka 10 is a free floater
+
 # move ws to another monitor
 bindsym $mod+Shift+m move workspace to output right
+bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+bracketleft move workspace to output left
+
+# move all floating windows to the scratchpad
+bindsym $mod+x [floating] move scratchpad
+bindsym $mod+/ scratchpad show
 
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/regolith/i3/ws-1.json'"
 exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.config/regolith/i3/ws-2.json'"
