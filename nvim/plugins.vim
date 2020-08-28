@@ -6,7 +6,7 @@ Plug 'aserebryakov/vim-todo-lists'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/Colorizer' " colorize all hex codes
 Plug 'chrisbra/NrrwRgn'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 " Plug 'dbakker/vim-lint'
 Plug 'dense-analysis/ale'  " must be configured to be convenient
 Plug 'dracula/vim', {'as': 'dracula'}  " nice theme
@@ -31,6 +31,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-journal'
 Plug 'liuchengxu/vim-which-key'
 " Plug 'ludovicchabant/vim-gutentags'  " causes ctags failures
+" Plug 'craigemery/vim-autotag'  " neovim issue, :w fails every time
 Plug 'machakann/vim-swap'
 " Plug 'mattn/emmet-vim'
 Plug 'mboughaba/i3config.vim'
@@ -72,12 +73,15 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 " Plug 'yaasita/edit-slack.vim'
 " Plug 'Yggdroot/indentLine'  " show indentation line
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 " Plug 'jiangmiao/auto-pairs'
+Plug 'pearofducks/ansible-vim'
+Plug 'apalmer1377/factorus'
+Plug 'machakann/vim-highlightedyank'
 " newplug marker
 Plug 'ryanoasis/vim-devicons' " must be last!
 

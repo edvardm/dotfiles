@@ -1,5 +1,8 @@
 unalias ggsup > /dev/null 2>&1
 
+alias an=ansible
+alias ap=ansible-playbook
+alias ag=ansible-galaxy
 alias aG='alias | grep'
 alias todo='nvim -n ~/work.todo'
 alias agi='sudo apt install'
@@ -9,9 +12,11 @@ alias autoflake='\autoflake -r --in-place --remove-all-unused-imports'
 alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
 alias clipin='xclip -selection c'
 alias clipout='xclip -selection c -o'
-alias cat='bat --style="changes" --color auto'
+alias cat='bat --style="changes" --color always'
 alias cook='cookiecutter'
 alias de='direnv edit'
+alias da='direnv allow'
+alias c='\cat'
 alias d='git diff'
 alias e='nvim'
 alias fzf="\fzf -m --preview 'cat --color=always {}'"
@@ -20,6 +25,7 @@ alias g='git'
 alias tf=terraform
 alias dk='docker'
 alias drun='docker run -it --rm'
+alias dkv='docker volume'
 
 # TODO: move these to .gitconfig?
 alias gpfnv='git push --force-with-lease --no-verify'
@@ -34,7 +40,7 @@ alias rgn='rg -N'
 alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
-alias suspend='systemctl suspend'
+alias suspend='systemctl suspend -i'
 alias dc='docker-compose'
 alias cleanswp='rm -rf ~/.local/share/nvim/*.swp'
 alias ls='\exa --git --group-directories-first'
@@ -49,13 +55,12 @@ alias ll='l -l'
 alias lla='ll -a'
 alias pie='http'  # pie is so much easier to search from history
 alias ping='prettyping'
-alias franz='killall franz ; \franz &'
+alias pg='pgcli'
 alias po='poetry'
 alias py='python3'
 alias st='git status'
 alias test_cook='cook -f --no-input ~/code/python_cookiecutter/ makes_http_requests=n http_api=n && cd my_project'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
-alias vim="\nvim"
 alias r="\nvim -R"
 alias vv='vim "$(fzf)"'
 alias vtime='/usr/bin/time -v'
@@ -63,13 +68,16 @@ alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias lzd='lazydocker'
 alias vimrc='nvim ~/.config/nvim/init.vim'
+alias vifun='e ~/.oh-my-zsh/custom/functions.zsh; source ~/.oh-my-zsh/custom/functions.zsh'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
-
+alias bld='cargo build'
+alias run='cargo run'
 
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
+alias ssh.iceye='e ~/.ssh/config.d/iceye'
 
 ignore-local() {
-	echo $1 >> .git/info/exclude
+	echo $* >> .git/info/exclude
 }
 
 dl-music() {
@@ -126,3 +134,9 @@ disableipv6() {
 charm() {
     /usr/local/share/pycharm/bin/pycharm.sh $* &!
 }
+
+mkhost() {
+    echo "${1}\t${@:2}" | sudo tee -a /etc/hosts
+}
+
+
