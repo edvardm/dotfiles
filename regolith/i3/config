@@ -16,7 +16,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec /usr/bin/alacritty
 bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
 
 # kill focused window
@@ -178,15 +178,19 @@ bindsym $mod+plus gaps inner current plus 6
 set $laptop_disp "eDP-1"
 set $main_disp "HDMI-2"
 workspace $ws1 output $laptop_disp
+workspace $ws2 output $laptop_disp
 workspace $ws3 output $laptop_disp
-workspace $ws5 output $laptop_disp
-workspace $ws7 output $laptop_disp
-workspace $ws9 output $laptop_disp
-workspace $ws2 output $main_disp
 workspace $ws4 output $main_disp
+workspace $ws5 output $main_disp
 workspace $ws6 output $main_disp
+workspace $ws7 output $main_disp
 workspace $ws8 output $main_disp
+workspace $ws9 output $main_disp
 #workspace $ws0 aka 10 is a free floater
+
+assign [class="Slack"] $ws1
+assign [class="Remmina"] $ws8
+assign [class="zoom"] $ws9
 
 # move ws to another monitor
 bindsym $mod+Shift+m move workspace to output right
@@ -197,8 +201,10 @@ bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+x [floating] move scratchpad
 bindsym $mod+/ scratchpad show
 
-exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/regolith/i3/ws-1.json'"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.config/regolith/i3/ws-2.json'"
+# exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/regolith/i3/ws-1.json'"
+# exec --no-startup-id "i3-msg 'workspace 4; append_layout ~/.config/regolith/i3/ws-2.json'"
 
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/terminator'
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser'
+exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/alacritty; exec /usr/bin/alacritty'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/alacritty'
+exec --no-startup-id i3-msg 'workspace ; exec /usr/bin/brave-browser'
+# exec --no-startup-id i3-msg 'exec /usr/bin/compton'

@@ -9,13 +9,11 @@
        "x": 0,
        "y": 0
     },
-    "name": "ed@kessler: ~",
+    "name": "terminal",
     "percent": 0.4,
     "swallows": [
        {
-       "class": "^Terminator$",
-       "instance": "^terminator$"
-       // "title": "^ed\\@kessler\\:\\ \\~$"
+       "class": "^Alacritty$",
        }
     ],
     "type": "con"
