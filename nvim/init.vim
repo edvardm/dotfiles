@@ -66,7 +66,7 @@ else
 
     """r search results nvim VirtualEnv
     " let g:python_host_prog = expand('/usr/bin/python2')
-    " let g:python3_host_prog = expand('~/.pyenv/shims/python3')
+    let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
     " Presenting
     " au FileType md let b:presenting_slide_separator = '\v(^|\n)\-{4,}'
