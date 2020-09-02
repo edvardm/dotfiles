@@ -11,17 +11,6 @@ export SPACESHIP_DIR_TRUNC_REPO=false
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=60
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -95,3 +84,14 @@ source ~/.poetry/env
 # eval "$(starship init zsh)"
 # source $HOME/.config/broot/launcher/bash/br
 which neofetch > /dev/null 2>&1 && neofetch
+
+export ITERM2_SQUELCH_MARK=1
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+  PS1="%{$(iterm2_prompt_mark)%} "
+fi
+
+eval "$(pyenv virtualenv-init -)"
+
+
