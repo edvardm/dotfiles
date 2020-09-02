@@ -31,7 +31,7 @@
   cmd = meld "$LOCAL" "$REMOTE"
 
 [core]
-  excludesfile = /home/ed/.gitignore_global
+	excludesfile = /Users/ed/.gitignore_global
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
   oldNormal = red bold
@@ -62,3 +62,5 @@
 	smudge = git-lfs smudge -- %f
 [fetch]
 	prune = true
+[include]
+  path = ~/dotfiles/local/git.config

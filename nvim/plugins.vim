@@ -6,7 +6,6 @@ Plug 'aserebryakov/vim-todo-lists'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/Colorizer' " colorize all hex codes
 Plug 'chrisbra/NrrwRgn'
-" Plug 'davidhalter/jedi-vim'
 " Plug 'dbakker/vim-lint'
 Plug 'dense-analysis/ale'  " must be configured to be convenient
 Plug 'dracula/vim', {'as': 'dracula'}  " nice theme
@@ -49,7 +48,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'SirVer/ultisnips'  " causes sporadic errors
 Plug 'sotte/presenting.vim'  " simple vim presentations
 Plug 'stephpy/vim-yaml'
@@ -83,6 +82,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'apalmer1377/factorus'
 Plug 'machakann/vim-highlightedyank'
 " newplug marker
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons' " must be last!
 
 call plug#end()

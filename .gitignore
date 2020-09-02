@@ -1,5 +1,6 @@
 .venv/
 local/
+
 oh-my-zsh/custom/plugins/
 oh-my-zsh/custom/themes/
 git_user

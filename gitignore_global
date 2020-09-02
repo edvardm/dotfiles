@@ -8,6 +8,9 @@
 Session.vim
 /.tags*
 
+# Macos
+.DS_Store
+
 # Python
 .mypy_cache/
 .py[cod]
