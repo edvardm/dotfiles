@@ -65,7 +65,6 @@ else
     nnoremap <leader>cl :nohl<CR>
 
     """r search results nvim VirtualEnv
-    " let g:python_host_prog = expand('/usr/bin/python2')
     let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
     " Presenting
