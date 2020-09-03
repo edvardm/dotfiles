@@ -9,7 +9,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
 
     alias cin='pbcopy'
 
-elif [ "$(uname -s)" == "Linux" ]; then
+elif [ "$(uname -s)" = "Linux" ]; then
     alias susp='systemctl suspend'
     alias cin='xclip -selection c'
     alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
