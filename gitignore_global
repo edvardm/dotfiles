@@ -18,6 +18,8 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
+.python-version
+/dist/
 
 # Local stuff
 local/
