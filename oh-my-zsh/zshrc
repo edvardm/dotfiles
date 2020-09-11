@@ -132,9 +132,11 @@ SPACESHIP_PROMPT_ORDER=(
 )
 
 if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-  SPACESHIP_CHAR_SYMBOL="%{$(iterm2_prompt_mark)%}"
+  SPACESHIP_CHAR_SYMBOL=" %{$(iterm2_prompt_mark)%} "
 fi
 
+
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 
