@@ -24,7 +24,9 @@ alias an=ansible
 alias ap=ansible-playbook
 alias autoflake='\autoflake -r --in-place --remove-all-unused-imports'
 alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
+alias mutt=neomutt
 alias bld='cargo build'
+alias bri='brew install'
 alias c='\cat'
 alias cat='bat --style="changes" --color auto'
 alias ci='cargo install'
@@ -63,6 +65,7 @@ alias pg='pgcli'
 alias pie='http'  # pie is so much easier to search from history
 alias ping='prettyping'
 alias po='poetry'
+alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
 alias py='python3'
 alias r="\nvim -R"
 alias recent='lt --color=always| head -10'
@@ -147,4 +150,5 @@ mkhost() {
     echo "${1}\t${@:2}" | sudo tee -a /etc/hosts
 }
 
-
+# source any secret stuff if present
+test -f aliases.work.zsh && source aliases.work.zsh
