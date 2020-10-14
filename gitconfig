@@ -8,12 +8,13 @@
   br = branch
   w = grep -w
   gr = grep
-  cp = cherry-pick
+  ch = cherry-pick
 
   forgot = commit --amend --no-edit
   recent = branch --sort=-committerdate
 
   puo='!git push --set-upstream origin "$(git-branch-current 2> /dev/null)"'
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [githooks "autoupdate"]
   lastrun = 1553681835
