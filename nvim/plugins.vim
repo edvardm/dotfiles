@@ -81,7 +81,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'pearofducks/ansible-vim'
 Plug 'apalmer1377/factorus'
 Plug 'machakann/vim-highlightedyank'
+Plug 'codota/tabnine-vim'
 " newplug marker
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons' " must be last!
 
