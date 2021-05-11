@@ -5,6 +5,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     # coreutils for mac
     alias tar='gtar'
     alias sed='gsed'
+    alias find='gfind'
     alias date='gdate'
 
     alias cin='pbcopy'
@@ -22,9 +23,8 @@ alias agrp='sudo apt remove --purge'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias an=ansible
 alias ap=ansible-playbook
-alias autoflake='\autoflake -r --in-place --remove-all-unused-imports'
-alias autopep8='\autopep8 -aa --experimental --in-place --recursive'
-alias mutt=neomutt
+alias aws2='/usr/local/bin/aws'
+alias ecr-login='aws-ecr-auth | aws-docker-login'
 alias bld='cargo build'
 alias bri='brew install'
 alias c='\cat'
@@ -40,20 +40,27 @@ alias dk='docker'
 alias dkv='docker volume'
 alias drun='docker run -it --rm'
 alias e='nvim'
+alias emacs=vi
 alias ft="\fzf-tmux -d 15"
 alias fzf="\fzf -m --preview 'cat --color=always {}'"
 alias g='git'
+alias gp='git push --follow-tags'
 alias gpfnv='git push --force-with-lease --no-verify'
-alias gpnv='git push --no-verify'
+alias gpnv='git push --no-verify --follow-tags'
 alias gr='rg'
+alias grep='ggrep --color=auto'
 alias grbmr='git pull --rebase origin master'
 alias gs='git stash'
 alias gsp='git stash push'
 alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
+alias k='kubectl'
+alias kd='kubectl describe'
+alias kg='kubectl get'
 alias l='ls'
 alias la='l -a'
+alias lc=litecli
 alias lint='pylint -f colorized --disable=missing-docstring'
 alias ll='l -l'
 alias lla='ll -a'
@@ -61,11 +68,18 @@ alias ls='\exa --git --group-directories-first'
 alias lt='ls  -l --sort=oldest'
 alias ltr='ls  -l --sort=newest'
 alias lzd='lazydocker'
+alias make='remake'
+alias mk=remake
+alias mutt=neomutt
+alias nf=neofetch
 alias pg='pgcli'
 alias pie='http'  # pie is so much easier to search from history
+alias piens='http --verify false'
+alias pin='poetry install --no-root'
 alias ping='prettyping'
 alias po='poetry'
-alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
+alias prm='poetry remove'
+alias relock='git checkout --ours poetry.lock && git add poetry.lock'
 alias py='python3'
 alias r="\nvim -R"
 alias recent='lt --color=always| head -10'
@@ -73,13 +87,14 @@ alias rg='\rg --smart-case' # ripgrep
 alias rgn='rg -N'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
 alias run='cargo run'
+alias sl=sqlite3
 alias ssh.iceye='e ~/.ssh/config.d/iceye'
 alias st='git status'
 alias suspend='systemctl suspend -i'
-alias test_cook='cook -f --no-input ~/code/python_cookiecutter/ makes_http_requests=n http_api=n && cd my_project'
 alias tf=terraform
 alias todo='nvim -n ~/Documents/personal.todo.md'
 alias tree='ls --tree --git-ignore'
+alias venv='(test -d ${VENV-.venv} || python -m venv ${VENV-.venv}) && source ${VENV-.venv}/bin/activate'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
 alias vifun='e ~/.oh-my-zsh/custom/functions.zsh; source ~/.oh-my-zsh/custom/functions.zsh'
 alias vim="\nvim"
@@ -88,10 +103,11 @@ alias vtime='/usr/bin/time -v'
 alias vv='vim "$(fzf)"'
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 alias wtodo='nvim -n ~/Documents/work.todo.md'
+alias xz='\xz -T0'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
-
 ignore_local() {
+  mkdir -p .git/info/
 	echo $* >> .git/info/exclude
 }
 
@@ -142,13 +158,10 @@ disableipv6() {
     sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 }
 
-charm() {
-    /usr/local/share/pycharm/bin/pycharm.sh $* &!
-}
-
 mkhost() {
     echo "${1}\t${@:2}" | sudo tee -a /etc/hosts
 }
 
 # source any secret stuff if present
-test -f aliases.work.zsh && source aliases.work.zsh
+WORK=~/dotfiles/oh-my-zsh/custom/aliases.work.zsh
+test -f $WORK && source $WORK
