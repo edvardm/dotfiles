@@ -2,13 +2,15 @@
   path = ~/dotfiles/git_user
 
 [alias]
-  cb = checkout -b
+  sw = switch
   co = checkout
   cm = commit -m
   br = branch
   w = grep -w
+  wt = worktree
   gr = grep
   ch = cherry-pick
+  dsm = diff --stat master
 
   forgot = commit --amend --no-edit
   recent = branch --sort=-committerdate
@@ -25,7 +27,7 @@
   pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
 [diff]
   tool = meld
-  colorMoved = dimmed_zebra
+  colorMoved = default
 [difftool]
   prompt = false
 [difftool "meld"]
@@ -33,7 +35,8 @@
 
 [core]
 	excludesfile = /Users/ed/.gitignore_global
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	ignorecase = false
+    pager = delta
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -65,3 +68,20 @@
 	prune = true
 [include]
   path = ~/dotfiles/local/git.config
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+[init]
+	defaultBranch = master
+[user]
+	name = Edvard Majakari
+	email = edvard@majakari.net
