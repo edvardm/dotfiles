@@ -65,7 +65,7 @@ else
     nnoremap <leader>cl :nohl<CR>
 
     """r search results nvim VirtualEnv
-    let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
+    let g:python3_host_prog = expand('~/.config/nvim/.venv/bin/python')
 
     " Presenting
     " au FileType md let b:presenting_slide_separator = '\v(^|\n)\-{4,}'
@@ -80,7 +80,7 @@ else
     let g:markdown_minlines = 500
 
     " Nerdtree
-    set guifont=DroidSansMono\ Nerd\ Font\ 11
+    set guifont=DroidSansMono\ Nerd\ Font\ 12
 
     " Limelight
     " Color name (:help cterm-colors) or ANSI code
@@ -110,6 +110,7 @@ else
     nnoremap <silent> <Leader>ll :Limelight<CR>
     nnoremap <silent> <Leader>nl :Limelight!<CR>
 
+    let g:neovide_cursor_vfx_mode = "railgun"
     """ Bookmarks
 
     " highlight BookmarkSign ctermbg=NONE ctermfg=160
@@ -175,7 +176,7 @@ else
     " xmap ga <Plug>(EasyAlign)
     " nnoremap ga <Plug>(EasyAlign)"
     " Python (for Python 3+ only)
-    let g:pymode_python = 'python3'
+    let g:pymode_python = 'python'
     let g:pymode_virtualenv = 1
     let g:pymode_options_max_line_length = 88
     autocmd FileType python set colorcolumn=88
