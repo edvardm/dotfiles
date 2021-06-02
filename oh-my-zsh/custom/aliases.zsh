@@ -24,7 +24,6 @@ alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias an=ansible
 alias ap=ansible-playbook
 alias aws2='/usr/local/bin/aws'
-alias ecr-login='aws-ecr-auth | aws-docker-login'
 alias bld='cargo build'
 alias bri='brew install'
 alias c='\cat'
@@ -37,6 +36,7 @@ alias da='direnv allow'
 alias dc='docker-compose'
 alias de='direnv edit'
 alias dk='docker'
+alias kc='kubectl config'
 alias dkv='docker volume'
 alias drun='docker run -it --rm'
 alias e='nvim'
@@ -127,20 +127,12 @@ mcd() {
 }
 
 pycook() {
-  cookiecutter --no-input -f ~/code/python_cookiecutter "$*"
-}
-
-
-# so that pyenv works immediately after pip changes
-unalias pip > /dev/null 2>&1
-pip() {
-    pip3 $* && (pyenv rehash > /dev/null 2>&1)
+  cookiecutter -f ~/iceye/python-cookiecutter
 }
 
 viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
 
-shell2task() {
-  # really quick invoke tasks
+task() {
   name=${1//-/_}
   cmd="${2}"
   \cat <<EOF
