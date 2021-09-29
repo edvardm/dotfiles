@@ -85,3 +85,6 @@
 [user]
 	name = Edvard Majakari
 	email = edvard@majakari.net
+
+[includeIf "gitdir:~/work"]
+    path = ~/.work.gitconfig
