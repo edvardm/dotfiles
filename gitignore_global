@@ -1,4 +1,4 @@
-/.direnv
+.direnv/
 .vagrant/
 
 # Editors
@@ -12,15 +12,21 @@ Session.vim
 .DS_Store
 
 # Python
+.python-version
 .mypy_cache/
 .py[cod]
 __pycache__/
+.pytest_cache/
 .venv/
 venv/
 *.egg-info/
-.python-version
 /dist/
+.pytype/
+/.coverage
 
 # Local stuff
 local/
 /*.todo
+
+# git worktrees
+git-wt-*/
