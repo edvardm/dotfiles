@@ -70,7 +70,7 @@
   path = ~/dotfiles/local/git.config
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --features=interactive
 
 [delta]
     features = side-by-side line-numbers decorations
@@ -86,5 +86,5 @@
 	name = Edvard Majakari
 	email = edvard@majakari.net
 
-[includeIf "gitdir:~/work"]
-    path = ~/.work.gitconfig
+[includeIf "gitdir:~/work/wolt/"]
+    path = ~/work/wolt/gitconfig
