@@ -24,7 +24,6 @@ bb-to-gh() {
 # See also: http://www.paulund.co.uk/change-url-of-git-repository
 
     echo git remote rename origin bitbucket
-    echo git remote add origin git@github.com:iceye-ltd/$1.git
     echo git push origin master
     echo git remote rm bitbucket
 }

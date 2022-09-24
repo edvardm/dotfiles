@@ -25,8 +25,15 @@ venv/
 /.coverage
 
 # Local stuff
-local/
-/*.todo
+/local/
+/*.todo.md
 
 # git worktrees
 git-wt-*/
+
+.envrc
+.myenv
+
+.ngrok-*
+/.env
+.env.local

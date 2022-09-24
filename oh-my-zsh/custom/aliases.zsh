@@ -1,4 +1,5 @@
 unalias ggsup > /dev/null 2>&1
+unalias sd
 
 
 if [ "$(uname -s)" = "Darwin" ]; then
@@ -9,7 +10,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     alias date='gdate'
 
     alias cin='pbcopy'
-
+    alias sleep=gsleep
 elif [ "$(uname -s)" = "Linux" ]; then
     alias susp='systemctl suspend'
     alias cin='xclip -selection c'
@@ -17,6 +18,7 @@ elif [ "$(uname -s)" = "Linux" ]; then
 fi
 
 alias aG='alias | grep'
+alias autoflake='\autoflake --in-place --remove-all-unused-imports --remove-unused-variables --remove-duplicate-keys --ignore-init-module-imports -r'
 alias ag=ansible-galaxy
 alias agi='sudo apt install'
 alias agrp='sudo apt remove --purge'
@@ -31,33 +33,47 @@ alias cat='bat --style="changes" --color auto'
 alias ci='cargo install'
 alias cleanswp='rm -rf ~/.local/share/nvim/*.swp'
 alias cook='cookiecutter'
+alias clone='gh repo clone'
+alias h='head'
 alias d='git diff'
+alias dfm='git diff origin/$(git_main_branch) --'
 alias da='direnv allow'
-alias dc='docker-compose'
-alias de='direnv edit'
+alias dc='docker compose'
+alias de='direnv edit .'
 alias dk='docker'
 alias kc='kubectl config'
 alias dkv='docker volume'
 alias drun='docker run -it --rm'
+alias dust='dust -r'
 alias e='nvim'
 alias emacs=vi
 alias ft="\fzf-tmux -d 15"
 alias fzf="\fzf -m --preview 'cat --color=always {}'"
 alias g='git'
+alias eg='EDITOR=code g'
+alias ch.='code -n .'
 alias gp='git push --follow-tags'
 alias gpfnv='git push --force-with-lease --no-verify'
 alias gpnv='git push --no-verify --follow-tags'
-alias gr='rg'
+alias gr='grep'
 alias grep='ggrep --color=auto'
-alias grbmr='git pull --rebase origin master'
+alias grbmr='git pull --rebase origin $(git_main_branch)'
 alias gs='git stash'
 alias gsp='git stash push'
-alias i='(type ipython >/dev/null || pip install ipython readline) && ipython'
+alias glowp='glow -p'
+alias ghci='ghci-8.10.7'
+alias gv='gh repo view --web'
+alias chs='git diff --stat origin/$(git_main_branch)'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
+alias j=just
+alias jch='just --choose'
+alias ip='(type ipython >/dev/null || pip install ipython readline) && ipython'
+alias i=inv
 alias k='kubectl'
 alias kd='kubectl describe'
 alias kg='kubectl get'
+alias lg='lazygit'
 alias l='ls'
 alias la='l -a'
 alias lc=litecli
@@ -69,28 +85,38 @@ alias lt='ls  -l --sort=oldest'
 alias ltr='ls  -l --sort=newest'
 alias lzd='lazydocker'
 alias make='remake'
+alias mypy='dmypy run -- --exclude local/'
 alias mk=remake
 alias mutt=neomutt
 alias nf=neofetch
 alias pg='pgcli'
 alias pie='http'  # pie is so much easier to search from history
 alias piens='http --verify false'
-alias pin='poetry install --no-root'
+alias pin='poetry install'
+alias pdev='poetry add -D'
 alias ping='prettyping'
+alias pon='poetry new --src'
+alias pol='poetry new'
 alias po='poetry'
 alias prm='poetry remove'
+alias lpsql='psql -U postgres -h localhost'
+alias lcreatedb='createdb -U postgres -h localhost'
+alias ldropdb='dropdb -U postgres -h localhost'
 alias relock='git checkout --ours poetry.lock && git add poetry.lock'
 alias py='python3'
+alias pu='pulumi'
 alias r="\nvim -R"
 alias recent='lt --color=always| head -10'
-alias rg='\rg --smart-case' # ripgrep
+alias rg='\rg --smart-case --color always' # ripgrep
 alias rgn='rg -N'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
-alias run='cargo run'
+alias crun='cargo run'
 alias sl=sqlite3
-alias ssh.iceye='e ~/.ssh/config.d/iceye'
 alias st='git status'
 alias suspend='systemctl suspend -i'
+alias t='tmux'
+alias tp='tmuxp'
+alias tx='tmuxinator'
 alias tf=terraform
 alias todo='nvim -n ~/Documents/personal.todo.md'
 alias tree='ls --tree --git-ignore'
@@ -106,6 +132,8 @@ alias wtodo='nvim -n ~/Documents/work.todo.md'
 alias xz='\xz -T0'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+
 ignore_local() {
   mkdir -p .git/info/
 	echo $* >> .git/info/exclude
@@ -126,34 +154,23 @@ mcd() {
   mkdir -p $1 && cd $1
 }
 
-pycook() {
-  cookiecutter -f ~/iceye/python-cookiecutter
-}
-
-viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
-
-task() {
+mktask() {
   name=${1//-/_}
   cmd="${2}"
-  \cat <<EOF
-from invoke import task
 
+  pre=""
+  if [ ! -f tasks.py ]; then
+    pre="from invoke import task\n"
+  fi
+
+\cat <<EOF
+$pre
 @task
-def $name(ctx):
-    """Description"""
-    ctx.run("$cmd")
+def $name(c):
+    """Run ${1}"""
+    c.run("$cmd")
 EOF
 }
 
-disableipv6() {
-    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-}
-
-mkhost() {
-    echo "${1}\t${@:2}" | sudo tee -a /etc/hosts
-}
-
-# source any secret stuff if present
 WORK=~/dotfiles/oh-my-zsh/custom/aliases.work.zsh
 test -f $WORK && source $WORK

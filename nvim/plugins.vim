@@ -10,7 +10,7 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'dense-analysis/ale'  " must be configured to be convenient
 Plug 'dracula/vim', {'as': 'dracula'}  " nice theme
 Plug 'dzeban/vim-log-syntax'
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
 Plug 'enomsg/vim-haskellConcealPlus'
@@ -21,7 +21,7 @@ Plug 'habamax/vim-asciidoctor'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'inkarkat/vim-SyntaxRange'
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/goyo.vim'
@@ -40,7 +40,7 @@ Plug 'mhinz/vim-startify'
 Plug 'mtth/scratch.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'PeterRincker/vim-argumentative'  " <, and >, shift arguments, [, ], move over them etc
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Plug 'python-rope/ropevim'
@@ -85,6 +85,8 @@ Plug 'codota/tabnine-vim'
 " newplug marker
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'NoahTheDuke/vim-just'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'ryanoasis/vim-devicons' " must be last!
 
 call plug#end()
