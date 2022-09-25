@@ -10,6 +10,8 @@ else
     let mapleader=","
     nnoremap \ <leader>q
 
+    " set concealcursor=nciv " haskell mode
+
     " Automatically reload when file changes
     set autoread
     au FocusGained,BufEnter * :checktime
@@ -80,7 +82,7 @@ else
     let g:markdown_minlines = 500
 
     " Nerdtree
-    set guifont=DroidSansMono\ Nerd\ Font\ 12
+    " set guifont=DroidSansMono\ Nerd\ Font\ 12
 
     " Limelight
     " Color name (:help cterm-colors) or ANSI code
@@ -355,7 +357,5 @@ else
     nnoremap <silent> <Leader>b :Buffers<CR>
 
     """ Macros
-
-
     """ End macros
 endif
