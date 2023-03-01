@@ -2,74 +2,79 @@
   path = ~/dotfiles/git_user
 
 [alias]
-  sw = switch
-  co = checkout
-  cm = commit -m
-  br = branch
-  w = grep -w
-  wt = worktree
-  gr = grep
-  ch = cherry-pick
-  dsm = diff --stat origin/master
-  dft = difftool
+    dft = difftool
+    br = branch
+    ch = cherry-pick
+    cm = commit -m
+    cmv = commit --no-verify -m
+    co = checkout
+    dft = difftool
+    ma = machete
+    dsm = diff --stat origin/master
+    gr = grep
+    rc = rebase --continue
+    sw = switch
+    w = grep -w
+    wt = worktree
 
-  forgot = commit --amend --no-edit
-  recent = !git branch --color=always --sort=-committerdate | head -8
+    forgot = commit --amend --no-edit
+    forgotv = commit --no-verify --amend --no-edit
+    recent = !git branch --color=always --sort=-committerdate | head -16
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
-  ticket = "!git sw -c \"$1/$2\" #"
+    ticket = "!git sw -c \"$1/$2\" #"
 
-  cleanup = "!git worktree prune; git delete-merged-branches ; git delete-squashed-branches"
+    cleanup = "!git worktree prune; git delete-merged-branches ; git delete-squashed-branches"
 
-  cart = "!git commit --no-verify -m \"🎨  $1\" #"
-  cboom = "!git commit -m \"💥  $1\" #"
-  cci = "!git commit -m \"💚  $1\" #"
-  cconf = "!git commit -m \"🔧  $1\" #"
-  cdead = "!git commit -m \"⚰️  $1\" #"
-  cdepl = "!git commit -m \"🚀  $1\" #"
-  cdev = "!git commit -m \"🔨 $1\" #"
-  cdoc = "!git commit -m \"📝  $1\" #"
-  cdocker = "!git commit -m \"🐳  $1\" #"
-  cdowndep = "!git commit -m \"⬇️  $1\" #"
-  cdx = "!git commit --no-verify -m \"🧑‍💻 $1\" #"
-  cfeat = "!git commit -m \"🚩  $1\" #"
-  cfix = "!git commit -m \"🐛 $1\" #"
-  cgup = "!git commit -m \"⚡  $1\" #"
-  chot = "!git commit -m \"🚑  $1\" #"
-  cign = "!git commit -m \"🙈  $1\" #"
-  cinf = "!git commit -m \"🧱 $1\" #"
-  cinit = "!git init && git add . && git commit -m \"🎉 initial version\" #"
-  clint = "!git commit -m \"🚨  $1\" #"
-  clog = "!git commit -m \"🔊  $1\" #"
-  cnew = "!git commit -m \"✨  $1\" #"
-  cnewdep = "!git commit -m \"➕  $1\" #"
-  cperf = "!git commit -m \"⚡️  $1\" #"
-  cpr = "!git commit -m \"👌  $1\" #"
-  cref = "!git commit --no-verify -m \"♻️  $1\" #"
-  crem = "!git commit -m \"🔥  $1\" #"
-  crev = "!git commit -m \"⏪  $1\" #"
-  crmdep = "!git commit -m \"➖  $1\" #"
-  csec = "!git commit -m \"🔒  $1\" #"
-  ctest = "!git commit -m \"✅  $1\" #"
-  ctext = "!git commit -m \"📝  $1\" #"
-  ctypo = "!git commit -m \"✏️  $1\" #"
-  cui = "!git commit -m \"💄  $1\" #"
-  cupdep = "!git commit -m \"⬆️  $1\" #"
-  cver = "!git commit -m \"🔖  $1\" #"
-  cwip = "!git commit --no-verify -m \"🚧  $1\" #"
+    cart = "!git commit --no-verify -m \"🎨  $1\" #"
+    cboom = "!git commit -m \"💥  $1\" #"
+    cci = "!git commit -m \"💚  $1\" #"
+    cconf = "!git commit -m \"🔧  $1\" #"
+    cdead = "!git commit -m \"⚰️  $1\" #"
+    cdepl = "!git commit -m \"🚀  $1\" #"
+    cdev = "!git commit -m \"🔨 $1\" #"
+    cdoc = "!git commit -m \"📝  $1\" #"
+    cdocker = "!git commit -m \"🐳  $1\" #"
+    cdowndep = "!git commit -m \"⬇️  $1\" #"
+    cdx = "!git commit --no-verify -m \"🧑‍💻 $1\" #"
+    cfeat = "!git commit -m \"🚩  $1\" #"
+    cfix = "!git commit -m \"🐛 $1\" #"
+    cgup = "!git commit -m \"⚡  $1\" #"
+    chot = "!git commit -m \"🚑  $1\" #"
+    cign = "!git commit -m \"🙈  $1\" #"
+    cinf = "!git commit -m \"🧱 $1\" #"
+    cinit = "!git init && git add . && git commit -m \"🎉 initial version\" #"
+    clint = "!git commit -m \"🚨  $1\" #"
+    clog = "!git commit -m \"🔊  $1\" #"
+    cnew = "!git commit -m \"✨  $1\" #"
+    cnewdep = "!git commit -m \"➕  $1\" #"
+    cperf = "!git commit -m \"⚡️  $1\" #"
+    cpr = "!git commit -m \"👌  $1\" #"
+    cref = "!git commit --no-verify -m \"♻️  $1\" #"
+    crem = "!git commit -m \"🔥  $1\" #"
+    crev = "!git commit -m \"⏪  $1\" #"
+    crmdep = "!git commit -m \"➖  $1\" #"
+    csec = "!git commit -m \"🔒  $1\" #"
+    ctest = "!git commit -m \"✅  $1\" #"
+    ctext = "!git commit -m \"📝  $1\" #"
+    ctypo = "!git commit -m \"✏️  $1\" #"
+    cui = "!git commit -m \"💄  $1\" #"
+    cupdep = "!git commit -m \"⬆️  $1\" #"
+    cver = "!git commit -m \"🔖  $1\" #"
+    cwip = "!git commit --no-verify -m \"🚧  $1\" #"
 
 [githooks "autoupdate"]
   lastrun = 1553681835
 
 [log]
-  date = relative
+  date = iso
 [format]
   pretty = format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
 
 [diff]
     colorMoved = dimmed-zebra
     # colorMoved = default
-    # tool = difftastic
+    tool = difftastic
     # algorithm = patience
 [difftool]
   prompt = false
@@ -85,6 +90,10 @@
 	excludesfile = /Users/ed/.gitignore_global
 	ignorecase = false
     pager = delta
+
+[pager]
+    difftool = true
+
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -137,9 +146,12 @@
     file-decoration-style = none
 [init]
 	defaultBranch = master
+	templateDir = /Users/ed/.git-template
 [user]
 	name = Edvard Majakari
 	email = edvard@majakari.net
 
 [includeIf "gitdir:~/work/wolt/"]
     path = ~/work/wolt/gitconfig
+[blame]
+	markUnblamableLines = true

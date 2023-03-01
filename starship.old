@@ -1,0 +1,48 @@
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 24
+truncation_symbol = ""
+
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
+
+[git_status]
+conflicted = "🏳"
+ahead = " ⏮ "
+behind = " ⏩ "
+diverged = " 🔀 "
+untracked = " ❗"
+stashed = " 📥 "
+modified = " 📝 "
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+renamed = "👅 "
+deleted = " 🗑 "
+
+[character]
+symbol = "λ"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[aws]
+disabled = true
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+disabled = false
+
+[[battery.display]]
+threshold = 50
+style = "bold red"
+
+[python]
+prefix = ""
