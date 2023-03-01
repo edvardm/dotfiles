@@ -1,5 +1,4 @@
 unalias ggsup > /dev/null 2>&1
-unalias sd
 
 
 if [ "$(uname -s)" = "Darwin" ]; then
@@ -17,6 +16,7 @@ elif [ "$(uname -s)" = "Linux" ]; then
     alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 fi
 
+alias a='asdf'
 alias aG='alias | grep'
 alias autoflake='\autoflake --in-place --remove-all-unused-imports --remove-unused-variables --remove-duplicate-keys --ignore-init-module-imports -r'
 alias ag=ansible-galaxy
@@ -29,7 +29,7 @@ alias aws2='/usr/local/bin/aws'
 alias bld='cargo build'
 alias bri='brew install'
 alias c='\cat'
-alias cat='bat --style="changes" --color auto'
+# alias cat='bat --style="changes" --color auto'
 alias ci='cargo install'
 alias cleanswp='rm -rf ~/.local/share/nvim/*.swp'
 alias cook='cookiecutter'
@@ -45,10 +45,12 @@ alias kc='kubectl config'
 alias dkv='docker volume'
 alias drun='docker run -it --rm'
 alias dust='dust -r'
+alias ftrim='rename --nows --lower-case'
 alias e='nvim'
 alias emacs=vi
-alias ft="\fzf-tmux -d 15"
-alias fzf="\fzf -m --preview 'cat --color=always {}'"
+alias earth=earthly
+# alias ft='\fzf-tmux -d 15'
+# alias fzf='\fzf -m --preview \'\cat --color=always {}\''
 alias g='git'
 alias eg='EDITOR=code g'
 alias ch.='code -n .'
@@ -85,7 +87,6 @@ alias lt='ls  -l --sort=oldest'
 alias ltr='ls  -l --sort=newest'
 alias lzd='lazydocker'
 alias make='remake'
-alias mypy='dmypy run -- --exclude local/'
 alias mk=remake
 alias mutt=neomutt
 alias nf=neofetch
@@ -105,16 +106,15 @@ alias ldropdb='dropdb -U postgres -h localhost'
 alias relock='git checkout --ours poetry.lock && git add poetry.lock'
 alias py='python3'
 alias pu='pulumi'
-alias r="\nvim -R"
+alias r='\nvim -R'
 alias recent='lt --color=always| head -10'
-alias rg='\rg --smart-case --color always' # ripgrep
+alias rg='\rg --smart-case -.' # ripgrep
 alias rgn='rg -N'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
 alias crun='cargo run'
 alias sl=sqlite3
 alias st='git status'
 alias suspend='systemctl suspend -i'
-alias t='tmux'
 alias tp='tmuxp'
 alias tx='tmuxinator'
 alias tf=terraform
@@ -133,6 +133,7 @@ alias xz='\xz -T0'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+alias yirc='e ~/.config/yabai/yabairc'
 
 ignore_local() {
   mkdir -p .git/info/
@@ -141,13 +142,6 @@ ignore_local() {
 
 dl_music() {
   pushd ~/Music ; youtube-dl --embed-thumbnail -w --audio-quality 4 -x --audio-format best "$1" ; popd
-}
-
-inplace_sort() {
-  args="$@"
-  tmp=sort.tmp.$$
-  fname=${@[-1]}
-  sort $args > $tmp && mv $tmp "$fname"
 }
 
 mcd() {
