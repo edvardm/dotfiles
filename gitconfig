@@ -12,14 +12,15 @@
     ma = machete
     dsm = diff --stat origin/master
     gr = grep
+    rb = rebase --update-refs
     rc = rebase --continue
     sw = switch
     w = grep -w
-    wt = worktree
+    wt = worktbee
 
     forgot = commit --amend --no-edit
     forgotv = commit --no-verify --amend --no-edit
-    recent = !git branch --color=always --sort=-committerdate | head -16
+    recent = !git branch --color=always --sort=-committerdate | head -50
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
     ticket = "!git sw -c \"$1/$2\" #"
@@ -155,3 +156,5 @@
     path = ~/work/wolt/gitconfig
 [blame]
 	markUnblamableLines = true
+[advice]
+	macheteEditorSelection = false

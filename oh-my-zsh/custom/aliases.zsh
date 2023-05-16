@@ -29,6 +29,7 @@ alias aws2='/usr/local/bin/aws'
 alias bld='cargo build'
 alias bri='brew install'
 alias c='\cat'
+alias ca=cargo
 # alias cat='bat --style="changes" --color auto'
 alias ci='cargo install'
 alias cleanswp='rm -rf ~/.local/share/nvim/*.swp'
@@ -39,7 +40,7 @@ alias d='git diff'
 alias dfm='git diff origin/$(git_main_branch) --'
 alias da='direnv allow'
 alias dc='docker compose'
-alias de='direnv edit .'
+alias de='direnv edit'
 alias dk='docker'
 alias kc='kubectl config'
 alias dkv='docker volume'
@@ -60,11 +61,11 @@ alias gpnv='git push --no-verify --follow-tags'
 alias gr='grep'
 alias grep='ggrep --color=auto'
 alias grbmr='git pull --rebase origin $(git_main_branch)'
-alias gs='git stash'
 alias gsp='git stash push'
 alias glowp='glow -p'
 alias ghci='ghci-8.10.7'
 alias gv='gh repo view --web'
+alias gup='git pull --stat --rebase'
 alias chs='git diff --stat origin/$(git_main_branch)'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
@@ -108,7 +109,7 @@ alias py='python3'
 alias pu='pulumi'
 alias r='\nvim -R'
 alias recent='lt --color=always| head -10'
-alias rg='\rg --smart-case -.' # ripgrep
+alias rg='\rg --smart-case' # ripgrep
 alias rgn='rg -N'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
 alias crun='cargo run'
@@ -116,7 +117,8 @@ alias sl=sqlite3
 alias st='git status'
 alias suspend='systemctl suspend -i'
 alias tp='tmuxp'
-alias tx='tmuxinator'
+alias tpa'tmuxp load -a'
+alias tx='tmux'
 alias tf=terraform
 alias todo='nvim -n ~/Documents/personal.todo.md'
 alias tree='ls --tree --git-ignore'
@@ -135,7 +137,7 @@ alias zshrc='nvim ~/.zshrc'
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 alias yirc='e ~/.config/yabai/yabairc'
 
-ignore_local() {
+ignore-local() {
   mkdir -p .git/info/
 	echo $* >> .git/info/exclude
 }
