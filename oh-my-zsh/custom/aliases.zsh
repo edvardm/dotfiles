@@ -49,7 +49,7 @@ alias dust='dust -r'
 alias ftrim='rename --nows --lower-case'
 alias e='nvim'
 alias emacs=vi
-alias earth=earthly
+alias ea=earthly
 # alias ft='\fzf-tmux -d 15'
 # alias fzf='\fzf -m --preview \'\cat --color=always {}\''
 alias g='git'
@@ -88,7 +88,7 @@ alias lt='ls  -l --sort=oldest'
 alias ltr='ls  -l --sort=newest'
 alias lzd='lazydocker'
 alias make='remake'
-alias mk=remake
+alias m=make
 alias mutt=neomutt
 alias nf=neofetch
 alias pg='pgcli'
