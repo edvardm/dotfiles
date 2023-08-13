@@ -6,7 +6,7 @@
     br = branch
     ch = cherry-pick
     cm = commit -m
-    cmv = commit --no-verify -m
+    cmnv = commit --no-verify -m
     co = checkout
     dft = difftool
     ma = machete
@@ -16,11 +16,14 @@
     rc = rebase --continue
     sw = switch
     w = grep -w
-    wt = worktbee
+    wt = worktree
+
+    # for pairing sessions where we want to just quickly sync working branch
+    wip = commit -m "WIP" --no-verify
 
     forgot = commit --amend --no-edit
     forgotv = commit --no-verify --amend --no-edit
-    recent = !git branch --color=always --sort=-committerdate | head -50
+    recent = !git branch --color=always --sort=-committerdate | tac | head -50
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
     ticket = "!git sw -c \"$1/$2\" #"
@@ -76,6 +79,7 @@
     colorMoved = dimmed-zebra
     # colorMoved = default
     tool = difftastic
+	external = difft
     # algorithm = patience
 [difftool]
   prompt = false
@@ -111,8 +115,6 @@
   ui = true
 [rerere]
 	enabled = true
-[merge]
-    conflictstyle = diff3
 [pull]
     # rebase = true
 	twohead = ort
