@@ -9,6 +9,6 @@ templates:
 
 system-ghc: true
 install-ghc: true
-allow-newer: true
+allow-newer: false
 ghc-options:
   "$locals": -j

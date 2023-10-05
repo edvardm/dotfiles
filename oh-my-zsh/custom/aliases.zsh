@@ -10,6 +10,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
 
     alias cin='pbcopy'
     alias sleep=gsleep
+    alias units=gunits
 elif [ "$(uname -s)" = "Linux" ]; then
     alias susp='systemctl suspend'
     alias cin='xclip -selection c'
@@ -20,6 +21,7 @@ alias a='asdf'
 alias aG='alias | grep'
 alias autoflake='\autoflake --in-place --remove-all-unused-imports --remove-unused-variables --remove-duplicate-keys --ignore-init-module-imports -r'
 alias ag=ansible-galaxy
+alias s="git status"
 alias agi='sudo apt install'
 alias agrp='sudo apt remove --purge'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
@@ -47,11 +49,12 @@ alias dkv='docker volume'
 alias drun='docker run -it --rm'
 alias dust='dust -r'
 alias ftrim='rename --nows --lower-case'
-alias e='nvim'
+alias e='hx'
 alias emacs=vi
 alias ea=earthly
 # alias ft='\fzf-tmux -d 15'
 # alias fzf='\fzf -m --preview \'\cat --color=always {}\''
+alias fgco='fzf-git-checkout'
 alias g='git'
 alias eg='EDITOR=code g'
 alias ch.='code -n .'
@@ -60,6 +63,7 @@ alias gpfnv='git push --force-with-lease --no-verify'
 alias gpnv='git push --no-verify --follow-tags'
 alias gr='grep'
 alias grep='ggrep --color=auto'
+alias grb='git rebase --update-refs'
 alias grbmr='git pull --rebase origin $(git_main_branch)'
 alias gsp='git stash push'
 alias glowp='glow -p'
@@ -75,7 +79,7 @@ alias ip='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias i=inv
 alias k='kubectl'
 alias kd='kubectl describe'
-alias kg='kubectl get'
+alias kg='kubectl get --show-labels'
 alias lg='lazygit'
 alias l='ls'
 alias la='l -a'
@@ -114,7 +118,6 @@ alias rgn='rg -N'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
 alias crun='cargo run'
 alias sl=sqlite3
-alias st='git status'
 alias suspend='systemctl suspend -i'
 alias tp='tmuxp'
 alias tpa'tmuxp load -a'

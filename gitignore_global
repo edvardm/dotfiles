@@ -23,6 +23,7 @@ venv/
 /dist/
 .pytype/
 /.coverage
+.dmypy.json
 
 # Local stuff
 /local/
