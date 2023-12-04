@@ -7,3 +7,4 @@ git_user
 internal.zsh
 oh-my-zsh/custom/example.zsh
 nvim/old
+plugin/packer_compiled.lua
