@@ -3,6 +3,7 @@ theme = "onedark"
 [editor]
 line-number = "relative"
 mouse = false
+rulers = [88, 120]
 color-modes = true
 
 [editor.cursor-shape]
