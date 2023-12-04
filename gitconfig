@@ -155,9 +155,11 @@
 	name = Edvard Majakari
 	email = edvard@majakari.net
 
-[includeIf "gitdir:~/work/wolt/"]
-    path = ~/work/wolt/gitconfig
+[includeIf "gitdir:~/Code/"]
+    path = ~/Code/gitconfig
 [blame]
 	markUnblamableLines = true
 [advice]
 	macheteEditorSelection = false
+[commit]
+	gpgsign = false
