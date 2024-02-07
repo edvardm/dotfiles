@@ -163,3 +163,7 @@
 	macheteEditorSelection = false
 [commit]
 	gpgsign = false
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
