@@ -32,7 +32,6 @@ local/
 # git worktrees
 git-wt-*/
 
-.envrc
 .myenv
 
 .ngrok-*

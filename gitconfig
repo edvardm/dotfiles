@@ -3,11 +3,13 @@
 
 [alias]
     dft = difftool
+	bb = !~/.local/bin/better-branch.sh
     br = branch
     ch = cherry-pick
     cm = commit -m
     cmnv = commit --no-verify -m
     co = checkout
+	staash = stash --all
     dft = difftool
     ma = machete
     dsm = diff --stat origin/master
@@ -23,7 +25,7 @@
 
     forgot = commit --amend --no-edit
     forgotv = commit --no-verify --amend --no-edit
-    recent = !git branch --color=always --sort=-committerdate | tac | head -50
+    recent = !git branch --color=always --sort=-committerdate | head -30
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
     ticket = "!git sw -c \"$1/$2\" #"
@@ -121,6 +123,7 @@
 [rebase]
 	autoStash = true
 	updateRefs = true
+	autosquash = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -167,3 +170,11 @@
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+
+[color.status]
+	untracked = brightyellow
+	changed = brightblue
