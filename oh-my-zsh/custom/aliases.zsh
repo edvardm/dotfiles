@@ -81,6 +81,7 @@ alias jch='just --choose'
 alias ip='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias i=inv
 alias k='kubectl'
+alias kb='kubie'
 alias kd='kubectl describe'
 alias kgl='kubectl get --show-labels'
 alias ke='kubectl exec'
