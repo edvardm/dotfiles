@@ -103,15 +103,3 @@ source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(zoxide init zsh --cmd z)"
 
-# if [ -n "$PYTHONPATH" ]; then
-#     export PYTHONPATH='/Users/ed/Library/Application Support/pdm/venv/lib/python3.9/site-packages/pdm/pep582':$PYTHONPATH
-# else
-#    export PYTHONPATH='/Users/ed/Library/Application Support/pdm/venv/lib/python3.9/site-packages/pdm/pep582'
-# fi
-
-# TODO: ensure we don't print out stuff to console
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-POWERLEVEL9K_AWS_SHOW_ON_COMMAND=true
-
-
-export PATH="$HOME/.poetry/bin:$PATH"

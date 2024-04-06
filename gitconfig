@@ -1,179 +1,196 @@
 [include]
-path = ~/dotfiles/git_user
+    path = ~/dotfiles/git_user
 
 [alias]
-dft = difftool
-bb = !~/.local/bin/better-branch.sh
-br = branch
-ch = cherry-pick
-clone-head = clone --filter=tree:0
-cm = commit -m
-cmnv = commit --no-verify -m
-co = checkout
-staash = stash --all
-dft = difftool
-ma = machete
-dsm = diff --stat origin/master
-gr = grep
-rb = rebase --update-refs
-rc = rebase --continue
-sw = switch
-w = grep -w
-wt = worktree
+    dft = difftool
+    bb = !~/.local/bin/better-branch.sh
+    br = branch
+    ch = cherry-pick
+    clone-head = clone --filter=tree:0
+    cm = commit -m
+    cmnv = commit --no-verify -m
+    co = checkout
+    staash = stash --all
+    dft = difftool
+    ma = machete
+    dsm = diff --stat origin/master
+    gr = grep
+    rb = rebase --update-refs
+    rc = rebase --continue
+    sw = switch
+    w = grep -w
+    wt = worktree
 
 # for pairing sessions where we want to just quickly sync working branch
-wip = commit -m "WIP" --no-verify
+    wip = commit -m "WIP" --no-verify
 
-forgot = commit --amend --no-edit
-forgotv = commit --no-verify --amend --no-edit
-recent = !git branch --color=always --sort=-committerdate | head -30
-tree = log --graph --decorate --pretty=oneline --abbrev-commit
-ticket = "!git sw -c \"$1/$2\" #"
+    forgot = commit --amend --no-edit
+    forgotv = commit --no-verify --amend --no-edit
+    recent = !git branch --color=always --sort=-committerdate | head -30
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    ticket = "!git sw -c \"$1/$2\" #"
 
-cleanup = "!git worktree prune; git delete-merged-branches ; git delete-squashed-branches"
+    cleanup = "!git worktree prune; git delete-merged-branches ; git delete-squashed-branches"
 
-cart = "!git commit --no-verify -m \"🎨  $1\" #"
-cboom = "!git commit -m \"💥  $1\" #"
-cci = "!git commit -m \"💚  $1\" #"
-cconf = "!git commit -m \"🔧  $1\" #"
-cdead = "!git commit -m \"⚰️  $1\" #"
-cdepl = "!git commit -m \"🚀  $1\" #"
-cdev = "!git commit -m \"🔨 $1\" #"
-cdoc = "!git commit -m \"📝  $1\" #"
-cdocker = "!git commit -m \"🐳  $1\" #"
-cdowndep = "!git commit -m \"⬇️  $1\" #"
-cdx = "!git commit --no-verify -m \"🧑‍💻 $1\" #"
-cfeat = "!git commit -m \"🚩  $1\" #"
-cfix = "!git commit -m \"🐛 $1\" #"
-cgup = "!git commit -m \"⚡  $1\" #"
-chot = "!git commit -m \"🚑  $1\" #"
-cign = "!git commit -m \"🙈  $1\" #"
-cinf = "!git commit -m \"🧱 $1\" #"
-cinit = "!git init && git add . && git commit -m \"🎉 initial version\" #"
-clint = "!git commit -m \"🚨  $1\" #"
-clog = "!git commit -m \"🔊  $1\" #"
-cnew = "!git commit -m \"✨  $1\" #"
-cnewdep = "!git commit -m \"➕  $1\" #"
-cperf = "!git commit -m \"⚡️  $1\" #"
-cpr = "!git commit -m \"👌  $1\" #"
-cref = "!git commit --no-verify -m \"♻️  $1\" #"
-crem = "!git commit -m \"🔥  $1\" #"
-crev = "!git commit -m \"⏪  $1\" #"
-crmdep = "!git commit -m \"➖  $1\" #"
-csec = "!git commit -m \"🔒  $1\" #"
-ctest = "!git commit -m \"✅  $1\" #"
-ctext = "!git commit -m \"📝  $1\" #"
-ctypo = "!git commit -m \"✏️  $1\" #"
-cui = "!git commit -m \"💄  $1\" #"
-cupdep = "!git commit -m \"⬆️  $1\" #"
-cver = "!git commit -m \"🔖  $1\" #"
-cwip = "!git commit --no-verify -m \"🚧  $1\" #"
+    cart = "!git commit --no-verify -m \"🎨  $1\" #"
+    cboom = "!git commit -m \"💥  $1\" #"
+    cci = "!git commit -m \"💚  $1\" #"
+    cconf = "!git commit -m \"🔧  $1\" #"
+    cdead = "!git commit -m \"⚰️  $1\" #"
+    cdepl = "!git commit -m \"🚀  $1\" #"
+    cdev = "!git commit -m \"🔨 $1\" #"
+    cdoc = "!git commit -m \"📝  $1\" #"
+    cdocker = "!git commit -m \"🐳  $1\" #"
+    cdowndep = "!git commit -m \"⬇️  $1\" #"
+    cdx = "!git commit --no-verify -m \"🧑‍💻 $1\" #"
+    cfeat = "!git commit -m \"🚩  $1\" #"
+    cfix = "!git commit -m \"🐛 $1\" #"
+    cgup = "!git commit -m \"⚡  $1\" #"
+    chot = "!git commit -m \"🚑  $1\" #"
+    cign = "!git commit -m \"🙈  $1\" #"
+    cinf = "!git commit -m \"🧱 $1\" #"
+    cinit = "!git init && git add . && git commit -m \"🎉 initial version\" #"
+    clint = "!git commit -m \"🚨  $1\" #"
+    clog = "!git commit -m \"🔊  $1\" #"
+    cnew = "!git commit -m \"✨  $1\" #"
+    cnewdep = "!git commit -m \"➕  $1\" #"
+    cperf = "!git commit -m \"⚡️  $1\" #"
+    cpr = "!git commit -m \"👌  $1\" #"
+    cref = "!git commit --no-verify -m \"♻️  $1\" #"
+    crem = "!git commit -m \"🔥  $1\" #"
+    crev = "!git commit -m \"⏪  $1\" #"
+    crmdep = "!git commit -m \"➖  $1\" #"
+    csec = "!git commit -m \"🔒  $1\" #"
+    ctest = "!git commit -m \"✅  $1\" #"
+    ctext = "!git commit -m \"📝  $1\" #"
+    ctypo = "!git commit -m \"✏️  $1\" #"
+    cui = "!git commit -m \"💄  $1\" #"
+    cupdep = "!git commit -m \"⬆️  $1\" #"
+    cver = "!git commit -m \"🔖  $1\" #"
+    cwip = "!git commit --no-verify -m \"🚧  $1\" #"
 
 [githooks "autoupdate"]
-lastrun = 1553681835
+    lastrun = 1553681835
 
 [log]
-date = iso
+    date = iso
 [format]
-pretty = "format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"
+    pretty = "format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"
 
 [diff]
-colorMoved = dimmed-zebra
+    colorMoved = dimmed-zebra
 # colorMoved = default
-tool = difftastic
-external = difft
+    tool = difftastic
+    external = difft
+	algorithm = histogram
 # algorithm = patience
 [difftool]
-prompt = false
+    prompt = false
 
 [difftool "meld"]
-cmd = meld "$LOCAL" "$REMOTE"
+    cmd = meld "$LOCAL" "$REMOTE"
 
 [difftool "difftastic"]
-cmd = difft "$LOCAL" "$REMOTE"
+    cmd = difft "$LOCAL" "$REMOTE"
 
 [core]
-excludesfile = /Users/ed/.gitignore_global
-ignorecase = false
-pager = delta
+    excludesfile = /Users/ed/.gitignore_global
+    ignorecase = false
+    pager = delta
 
 [pager]
-difftool = true
+    difftool = true
 
 [color "diff-highlight"]
-oldNormal = red bold
-oldHighlight = red bold 52
-newNormal = green bold
-newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+
 [color "diff"]
-meta = yellow
-frag = magenta bold
-commit = yellow bold
-old = red bold
-new = green bold
-whitespace = red reverse
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
 [color]
-ui = true
+    ui = auto
+
+[color "grep"]
+    linenumber = yellow bold
+    match = green bold
+    filename = yellow bold     
+
 [rerere]
-enabled = true
+    enabled = true
+
 [pull]
-rebase = true
-twohead = ort
+    rebase = true
+    twohead = ort
+
 [rebase]
-autoStash = true
-updateRefs = true
-autosquash = true
+    autoStash = true
+    updateRefs = true
+    autosquash = true
+
 [filter "lfs"]
-process = git-lfs filter-process
-required = true
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+
 [fetch]
-prune = true
+    prune = true
+
 [include]
-path = ~/dotfiles/local/git.config
+    path = ~/dotfiles/local/git.config
 
 [interactive]
-diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only --features=interactive
+
 [add.interactive]
-useBuiltin = false
+    useBuiltin = false
 
 [delta]
-whitespace-error-style = 22 reverse
-line-numbers = true
-side-by-side = true
-decorations = true
-navigate = true
-light = false
+    whitespace-error-style = 22 reverse
+    line-numbers = true
+    side-by-side = true
+    decorations = true
+    navigate = true
+    light = false
 
 [delta "decorations"]
-commit-decoration-style = bold yellow box ul
-file-style = bold yellow ul
-file-decoration-style = none
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
 [init]
-defaultBranch = master
-templateDir = /Users/ed/.git-template
+    defaultBranch = master
+    templateDir = /Users/ed/.git-template
 [user]
-name = Edvard Majakari
-email = edvard@majakari.net
+    name = Edvard Majakari
+    email = edvard@majakari.net
 
 [includeIf "gitdir:~/Code/"]
-path = ~/Code/gitconfig
+    path = ~/Code/gitconfig
 [blame]
-markUnblamableLines = true
+    markUnblamableLines = true
 [advice]
-macheteEditorSelection = false
+    macheteEditorSelection = false
 [commit]
-gpgsign = false
+    gpgsign = false
 [credential]
-helper = /usr/local/share/gcm-core/git-credential-manager
+    helper = /usr/local/share/gcm-core/git-credential-manager
 [url "ssh://git@github.com/"]
-insteadOf = https://github.com/
+    insteadOf = https://github.com/
 [branch]
-sort = -committerdate
+    sort = -committerdate
 [column]
-ui = auto
+    ui = auto
 
 [color.status]
-untracked = brightyellow
-changed = brightblue
+    untracked = brightyellow
+    changed = brightblue
+[maintenance]
+	repo = /Users/ed/work/iceye/iceark
