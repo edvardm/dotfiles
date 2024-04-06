@@ -7,6 +7,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     alias sed='gsed'
     alias find='gfind'
     alias date='gdate'
+	alias grep=ggrep
 
     alias cin='pbcopy'
     alias sleep=gsleep
@@ -23,7 +24,7 @@ alias aG='alias | grep'
 alias autoflake='\autoflake --in-place --remove-all-unused-imports --remove-unused-variables --remove-duplicate-keys --ignore-init-module-imports -r'
 alias ag=ansible-galaxy
 alias s="git status"
-alias agi='sudo apt install'
+alias agi='sudo apt-fast install'
 alias agrp='sudo apt remove --purge'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias an=ansible
@@ -65,7 +66,7 @@ alias gpfnv='git push --force-with-lease --no-verify'
 alias gpnv='git push --no-verify --follow-tags'
 alias gcm='git checkout $(git_main_branch) && git pull'
 alias gr='grep'
-alias grep='ggrep --color=auto'
+alias grep='grep --color=auto'
 alias grb='git rebase --update-refs'
 alias grbmr='git pull --rebase origin $(git_main_branch)'
 alias gsp='git stash push'
