@@ -15,7 +15,7 @@ Session.vim
 .python-version
 .mypy_cache/
 .py[cod]
-__pycache__/
+**/__pycache__/
 .pytest_cache/
 .venv/
 venv/
@@ -24,6 +24,8 @@ venv/
 .pytype/
 /.coverage
 .dmypy.json
+**/*.egg-info/
+.ruff_cache/
 
 # Local stuff
 local/
