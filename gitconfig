@@ -171,6 +171,7 @@
 [user]
     name = Edvard Majakari
     email = edvard@majakari.net
+	signinkey = BE3BC84B3EFE1160DB31BB5E2693A2DF308230C7
 
 [includeIf "gitdir:~/Code/"]
     path = ~/Code/gitconfig
