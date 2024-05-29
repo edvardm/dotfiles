@@ -7,17 +7,21 @@ if [ "$(uname -s)" = "Darwin" ]; then
     alias sed='gsed'
     alias find='gfind'
     alias date='gdate'
-	alias grep=ggrep
+    alias grep='ggrep'
 
     alias cin='pbcopy'
     alias sleep=gsleep
     alias units=gunits
     alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 elif [ "$(uname -s)" = "Linux" ]; then
+    command -v dzdo > /dev/null 2>&1 && alias sudo=dzdo
     alias susp='systemctl suspend'
     alias cin='xclip -selection c'
     alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 fi
+
+# global aliases
+alias -g P="| less"
 
 alias a='asdf'
 alias aG='alias | grep'
@@ -40,6 +44,7 @@ alias cook='cookiecutter'
 alias clone='gh repo clone'
 alias h='head'
 alias d='git diff'
+alias dx='devbox'
 alias dfm='git diff origin/$(git_main_branch) --'
 alias da='direnv allow'
 alias dc='docker compose'
@@ -74,16 +79,19 @@ alias glowp='glow -p'
 alias ghci='ghci-8.10.7'
 alias gv='gh repo view --web'
 alias gup='git pull --stat --rebase'
-alias chs='git diff --stat origin/$(git_main_branch)'
+alias dst='git diff --stat'
+alias dstm='git diff --stat $(git_main_branch)'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
 alias j=just
 alias jch='just --choose'
+alias pydev='python -X dev'
 alias ip='(type ipython >/dev/null || pip install ipython readline) && ipython'
 alias i=inv
 alias k='kubectl'
 alias kb='kubie'
 alias kd='kubectl describe'
+alias kg='kubectl get'
 alias kgl='kubectl get --show-labels'
 alias ke='kubectl exec'
 alias lg='lazygit'
