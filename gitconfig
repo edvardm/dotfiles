@@ -83,7 +83,7 @@
     tool = difftastic
     external = difft
 	algorithm = histogram
-# algorithm = patience
+
 [difftool]
     prompt = false
 
@@ -97,7 +97,6 @@
     excludesfile = /Users/ed/.gitignore_global
     ignorecase = false
     pager = delta
-
 [pager]
     difftool = true
 
