@@ -171,11 +171,17 @@
     name = Edvard Majakari
     email = edvard@majakari.net
 	signinkey = BE3BC84B3EFE1160DB31BB5E2693A2DF308230C7
+defaultBranch = master
+# templateDir = ~/.git-template
+
+[include]
+path = ~/dotfiles/git_user
 
 [includeIf "gitdir:~/Code/"]
     path = ~/Code/gitconfig
 [blame]
     markUnblamableLines = true
+
 [advice]
     macheteEditorSelection = false
 [commit]
@@ -193,4 +199,5 @@
     untracked = brightyellow
     changed = brightblue
 [maintenance]
-	repo = /Users/ed/work/iceye/iceark
+	repo = /home/emajakari/iceye/deployment-configurations
+	repo = /home/emajakari/iceye/iceark
