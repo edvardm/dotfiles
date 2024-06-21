@@ -27,3 +27,12 @@ bb-to-gh() {
     echo git push origin master
     echo git remote rm bitbucket
 }
+
+mkbash() {
+  \cat <<EOF
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+EOF
+}
