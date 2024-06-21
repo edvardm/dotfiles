@@ -104,10 +104,8 @@ source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(zoxide init zsh --cmd z)"
 
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
 [ -d /home/linuxbrew] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
 
 PS1='${VENV_BASE:+($VENV_BASE)}[\w]\n\$ '
+
