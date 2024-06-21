@@ -16,6 +16,7 @@ return {
 		priority = 1000,
 		opts = {},
 	},
+	-- { "vmchale/dhall-vim", name="dhall-nvim", lazy=false, opts={} },
 	{
 		"kevinhwang91/nvim-ufo", -- modern folding
 		dependencies = { "kevinhwang91/promise-async" },
