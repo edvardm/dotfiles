@@ -28,7 +28,8 @@ eval "$(pyenv init -)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras kubectl extract fasd gpg-agent pyenv colored-man-pages)
+plugins=(git git-extras kubectl extract fasd \
+  gpg-agent pyenv colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,11 +42,9 @@ source $ZSH/oh-my-zsh.sh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 ### Direnv
-[ -d /home/linuxbrew ] && export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 eval "$(direnv hook zsh)"
 
 # FZF
-eval "$(fzf --zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS="--ansi --bind='ctrl-o:execute(xdg-open {})'"
