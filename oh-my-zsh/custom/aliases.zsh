@@ -22,6 +22,7 @@ fi
 
 # global aliases
 alias -g P="| less"
+alias -g H="--help | less"
 
 alias a='asdf'
 alias aG='alias | grep'
@@ -45,6 +46,9 @@ alias clone='gh repo clone'
 alias h='head'
 alias d='git diff'
 alias dx='devbox'
+alias dxa='devbox add'
+alias dxs='devbox shell'
+
 alias dfm='git diff origin/$(git_main_branch) --'
 alias da='direnv allow'
 alias dc='docker compose'
@@ -65,7 +69,7 @@ alias ea=earthly
 alias fgco='fzf-git-checkout'
 alias g='git'
 alias eg='EDITOR=code g'
-alias ch.='code -n .'
+alias ce='code -n'
 alias gp='git push --follow-tags'
 alias gpfnv='git push --force-with-lease --no-verify'
 alias gpnv='git push --no-verify --follow-tags'
@@ -79,11 +83,12 @@ alias glowp='glow -p'
 alias ghci='ghci-8.10.7'
 alias gv='gh repo view --web'
 alias gup='git pull --stat --rebase'
-alias dst='git diff --stat'
-alias dstm='git diff --stat $(git_main_branch)'
+alias dfs='git diff --stat'
+alias dfsm='git diff --stat $(git_main_branch)'
 alias isodate='date --utc +%FT%TZ'
 alias isodate_fs="isodate | sed 's/\://g'"
-alias j=just
+alias j="just --timestamp"
+alias jl='just --list'
 alias jch='just --choose'
 alias pydev='python -X dev'
 alias ip='(type ipython >/dev/null || pip install ipython readline) && ipython'
@@ -111,8 +116,6 @@ alias mutt=neomutt
 alias nf=neofetch
 alias nb='git switch -c'
 alias pg='pgcli'
-alias pie='http'  # pie is so much easier to search from history
-alias piens='http --verify false'
 alias pin='poetry install'
 alias pdev='poetry add -D'
 alias ping='prettyping'
@@ -124,8 +127,7 @@ alias lpsql='psql -U postgres -h localhost'
 alias lcreatedb='createdb -U postgres -h localhost'
 alias ldropdb='dropdb -U postgres -h localhost'
 alias relock='git checkout --ours poetry.lock && git add poetry.lock'
-alias py='python3'
-alias pu='pulumi'
+alias py='python'
 alias r='\nvim -R'
 alias recent='lt --color=always| head -10'
 alias rg='\rg --smart-case' # ripgrep
@@ -140,7 +142,7 @@ alias tx='tmux'
 alias tf=terraform
 alias todo='nvim -n ~/Documents/personal.todo.md'
 alias tree='ls --tree --git-ignore'
-alias venv='(test -d ${VENV-.venv} || python -m venv ${VENV-.venv}) && source ${VENV-.venv}/bin/activate'
+alias venv='(test -d ${VENV-.venv} || python -m venv ${VENV-.venv}) && . ${VENV-.venv}/bin/activate'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
 alias vifun='e ~/.oh-my-zsh/custom/functions.zsh; source ~/.oh-my-zsh/custom/functions.zsh'
 alias vim="\nvim"
@@ -156,8 +158,9 @@ alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 alias yirc='e ~/.config/yabai/yabairc'
 
 ignore-local() {
-  mkdir -p .git/info/
-	echo $* >> .git/info/exclude
+  groot=$(git root)
+  mkdir -p ${groot}/.git/info/
+  echo $* >> ${groot}/.git/info/exclude
 }
 
 dl_music() {
