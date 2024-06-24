@@ -94,7 +94,7 @@
     cmd = difft "$LOCAL" "$REMOTE"
 
 [core]
-    excludesfile = /Users/ed/.gitignore_global
+    excludesfile = ~/.gitignore_global
     ignorecase = false
     pager = delta
 [pager]
