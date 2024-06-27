@@ -5,6 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+#
+# we need linuxbrew in path, so that tools like just can be found by zsh here
+BREW_HOME=/home/linuxbrew/.linuxbrew
+export PATH=$BREW_HOME/bin:$PATH
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
@@ -21,18 +27,17 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-test -d ~/.pyenv && (export PATH=$HOME/.pyenv/bin:$PATH
-eval "$(pyenv init -)"
-
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras kubectl extract fasd \
-  gpg-agent pyenv colored-man-pages)
+plugins=(git git-extras kubectl extract fasd gpg-agent pyenv colored-man-pages)
+
+eval "$(brew shellenv)"
+# Add Homebrew's site-functions to fpath
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 
 source $ZSH/oh-my-zsh.sh
-
 
 # User configuration
 # Local stuff that needs to be run before rest of the file
@@ -61,9 +66,11 @@ compinit
 
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 compdef g=git
-compdef k=kubectl
 compdef j=just
+compdef k=kubectl
+compdef m=make
 compdef remake=make
+compdef ga='git'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -84,17 +91,21 @@ setopt HIST_BEEP
 
 setopt PROMPT_SUBST
 
-test -d ~/.poetry && source ~/.poetry/env
+[ -d ~/.poetry ] && source ~/.poetry/env
 
 # source $HOME/.config/broot/launcher/bash/br
 
-test -f "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh" || true
+test -f "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+# type pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+# type pyenv > /dev/null 2>&1 && eval "$(pyenv virtualenv-init -)"
+
+test -f $HOME/.config/broot/launcher/bash/br && . $HOME/.config/broot/launcher/bash/br
 
 if [[ -f /usr/local/share/chtf/chtf.sh ]]; then
     source /usr/local/share/chtf/chtf.sh
 fi
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
@@ -102,9 +113,4 @@ source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 [ -f "${HOME}/.ghcup/env" ] && source "${HOME}/.ghcup/env"
 
 eval "$(zoxide init zsh --cmd z)"
-
-[ -d /home/linuxbrew] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-. "$HOME/.cargo/env"
-
-PS1='${VENV_BASE:+($VENV_BASE)}[\w]\n\$ '
 
