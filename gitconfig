@@ -2,7 +2,6 @@
     path = ~/dotfiles/git_user
 
 [alias]
-    dft = difftool
     bb = !~/.local/bin/better-branch.sh
     br = branch
     ch = cherry-pick
@@ -10,13 +9,13 @@
     cm = commit -m
     cmnv = commit --no-verify -m
     co = checkout
-    staash = stash --all
     dft = difftool
-    ma = machete
     dsm = diff --stat origin/master
     gr = grep
+    ma = machete
     rb = rebase --update-refs
     rc = rebase --continue
+    staash = stash --all
     sw = switch
     w = grep -w
     wt = worktree
@@ -79,10 +78,10 @@
 
 [diff]
     colorMoved = dimmed-zebra
-# colorMoved = default
-    tool = difftastic
-    external = difft
-	algorithm = histogram
+    # colorMoved = default
+	# tool = difftastic
+	# external = difft
+	# algorithm = histogram
 
 [difftool]
     prompt = false
@@ -98,7 +97,7 @@
     ignorecase = false
     pager = delta
 [pager]
-    difftool = true
+	# difftool = true
 
 [color "diff-highlight"]
     oldNormal = red bold
