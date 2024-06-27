@@ -61,6 +61,7 @@ alias du='dust'
 alias dust='dust -r'
 alias df='duf -hide fuse,special'
 alias ftrim='rename --nows --lower-case'
+alias flm=flameshot
 alias e='nvim'
 alias emacs=vi
 alias ea=earthly
