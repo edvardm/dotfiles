@@ -119,7 +119,7 @@ ui = auto
 [color "grep"]
 linenumber = yellow bold
 match = green bold
-filename = yellow bold     
+filename = yellow bold
 
 [rerere]
 enabled = true
@@ -184,9 +184,10 @@ markUnblamableLines = true
 [advice]
 macheteEditorSelection = false
 [commit]
-gpgsign = false
+gpgsign = true
 [credential]
 helper = /usr/local/share/gcm-core/git-credential-manager
+gpgsign = true
 [url "ssh://git@github.com/"]
 insteadOf = https://github.com/
 [branch]
@@ -200,3 +201,7 @@ changed = brightblue
 [maintenance]
 repo = /home/emajakari/iceye/deployment-configurations
 repo = /home/emajakari/iceye/iceark
+[include]
+path = ~/dotfiles/local/git.config
+[credential]
+helper = /usr/local/share/gcm-core/git-credential-manager

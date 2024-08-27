@@ -1,23 +1,23 @@
-unalias ggsup > /dev/null 2>&1
-
+unalias ggsup >/dev/null 2>&1
 
 if [ "$(uname -s)" = "Darwin" ]; then
-    # coreutils for mac
-    alias tar='gtar'
-    alias sed='gsed'
-    alias find='gfind'
-    alias date='gdate'
-    alias grep='ggrep'
+  # coreutils for mac
+  alias tar='gtar'
+  alias sed='gsed'
+  alias find='gfind'
+  alias date='gdate'
+  alias grep='ggrep'
 
-    alias cin='pbcopy'
-    alias sleep=gsleep
-    alias units=gunits
-    alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+  alias cin='pbcopy'
+  alias sleep=gsleep
+  alias units=gunits
+  alias reset-time='sudo sntp -sS time.apple.com'
+  alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 elif [ "$(uname -s)" = "Linux" ]; then
-    command -v dzdo > /dev/null 2>&1 && alias sudo=dzdo
-    alias susp='systemctl suspend'
-    alias cin='xclip -selection c'
-    alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
+  command -v dzdo >/dev/null 2>&1 && alias sudo=dzdo
+  alias susp='systemctl suspend'
+  alias cin='xclip -selection c'
+  alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 fi
 
 # global aliases
@@ -71,6 +71,7 @@ alias fgco='fzf-git-checkout'
 alias g='git'
 alias eg='EDITOR=code g'
 alias ce='code -n'
+# alias ce='code --in-process-gpu -n'
 alias gp='git push --follow-tags'
 alias gpfnv='git push --force-with-lease --no-verify'
 alias gpnv='git push --no-verify --follow-tags'
@@ -159,13 +160,15 @@ alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 alias yirc='e ~/.config/yabai/yabairc'
 
 ignore-local() {
-  groot=$(git root)
-  mkdir -p ${groot}/.git/info/
-  echo $* >> ${groot}/.git/info/exclude
+  dotgit="$(git rev-parse --show-toplevel)/.git"
+  mkdir -p ${dotgit}/info/
+  echo $* >>${dotgit}/info/exclude
 }
 
 dl_music() {
-  pushd ~/Music ; youtube-dl --embed-thumbnail -w --audio-quality 4 -x --audio-format best "$1" ; popd
+  pushd ~/Music
+  youtube-dl --embed-thumbnail -w --audio-quality 4 -x --audio-format best "$1"
+  popd
 }
 
 mcd() {
@@ -181,7 +184,7 @@ mktask() {
     pre="from invoke import task\n"
   fi
 
-\cat <<EOF
+  \cat <<EOF
 $pre
 @task
 def $name(c):
