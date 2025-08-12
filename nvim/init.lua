@@ -1,20 +1,22 @@
+vim.opt.termguicolors = true
 vim.opt.number = true -- show line numbers
-vim.opt.rnu = true -- show relative numbers
-
+-- vim.opt.rnu = true -- show relative numbers
 vim.opt.ignorecase = true -- ignore case when searching
-
 vim.opt.smartcase = true -- if search has case use it
-
-vim.opt.hlsearch = true -- highlight search results
-
-vim.opt.ai = true -- auto indent
 vim.opt.si = true -- smart indent
 vim.opt.wrap = true -- wrap long lines
 vim.opt.breakindent = true -- preserve indentation when wrapping
-
+vim.opt.scrolloff = 4
+vim.opt.cmdheight = 3
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
+vim.opt.foldnestmax = 4
 
 vim.opt.showmatch = true -- show matching bracket
 vim.opt.mat = 2
@@ -67,8 +69,8 @@ vim.cmd([[colorscheme catppuccin]])
 -- format on write
 vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+-- vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+-- vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
 -- Run gofmt + goimport on save
 local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
@@ -79,3 +81,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 	group = format_sync_grp,
 })
+
+vim.g.python3_host_prog = vim.fn.expand('$HOME/src/py3nvim/.venv/bin/python')

@@ -29,19 +29,22 @@ alias aG='alias | grep'
 alias autoflake='\autoflake --in-place --remove-all-unused-imports --remove-unused-variables --remove-duplicate-keys --ignore-init-module-imports -r'
 alias ag=ansible-galaxy
 alias s="git status"
+alias gsn='git status -s | cut -c4-' # names only
 alias agi='sudo apt-fast install'
 alias agrp='sudo apt remove --purge'
 alias agu='sudo apt update && sudo apt-get -y upgrade'
 alias an=ansible
 alias ap=ansible-playbook
 alias aws2='/usr/local/bin/aws'
+alias bat='\bat --theme TwoDark'
 alias bri='brew install'
-alias c='\cat'
+alias c='bat'
 alias ca=cargo
 alias cb='cargo build'
 alias ci='cargo install'
-alias cleanswp='rm -rf ~/.local/share/nvim/*.swp'
+alias mde='f() { mkdir -p "$(dirname -- "$1")" && touch "$1" && "${EDITOR:-vim}" "$1"; }; f'
 alias cook='cookiecutter'
+alias charm='pycharm'
 alias clone='gh repo clone'
 alias h='head'
 alias d='git diff'
@@ -56,7 +59,8 @@ alias de='direnv edit'
 alias dk='docker'
 alias kc='kubectl config'
 alias dkv='docker volume'
-alias drun='docker run -it --rm'
+alias drun='docker run -it --net=host'
+alias drunrm='drun --rm'
 alias du='dust'
 alias dust='dust -r'
 alias df='duf -hide fuse,special'
@@ -71,6 +75,9 @@ alias fgco='fzf-git-checkout'
 alias g='git'
 alias eg='EDITOR=code g'
 alias ce='code -n'
+alias cm='chezmoi'
+alias cms='chezmoi status'
+alias cma='chezmoi re-add'
 # alias ce='code --in-process-gpu -n'
 alias gp='git push --follow-tags'
 alias gpfnv='git push --force-with-lease --no-verify'
@@ -102,11 +109,11 @@ alias kg='kubectl get'
 alias kgl='kubectl get --show-labels'
 alias ke='kubectl exec'
 alias lg='lazygit'
-alias l='ls'
+alias l='eza'
 alias la='l -a'
 alias lc=litecli
 alias lint='pylint -f colorized --disable=missing-docstring'
-alias ll='l -l'
+alias ll='eza -l'
 alias lla='ll -a'
 alias ls='\exa --git --group-directories-first'
 alias lt='ls  -l --sort=oldest'
@@ -114,6 +121,7 @@ alias ltr='ls  -l --sort=newest'
 alias lzd='lazydocker'
 alias make='remake'
 alias m=make
+alias mn='make --dry-run'
 alias mutt=neomutt
 alias nf=neofetch
 alias nb='git switch -c'
@@ -132,10 +140,13 @@ alias relock='git checkout --ours poetry.lock && git add poetry.lock'
 alias py='python'
 alias r='\nvim -R'
 alias recent='lt --color=always| head -10'
-alias rg='\rg --smart-case' # ripgrep
+alias rg='\rg --smart-case --hidden' # ripgrep
+alias ggn='git grep -n'
 alias rgn='rg -N'
 alias rmpyc='fd -I __pycache__ | xargs  rm -r'
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 alias crun='cargo run'
+alias st='stack'
 alias sl=sqlite3
 alias suspend='systemctl suspend -i'
 alias tp='tmuxp'
@@ -144,7 +155,8 @@ alias tx='tmux'
 alias tf=terraform
 alias todo='nvim -n ~/Documents/personal.todo.md'
 alias tree='ls --tree --git-ignore'
-alias venv='(test -d ${VENV-.venv} || python -m venv ${VENV-.venv}) && . ${VENV-.venv}/bin/activate'
+alias venv='(test -d .venv || uv venv) && . .venv/bin/activate'
+alias vlog='bat -pp -l log'
 alias vialias="nvim ~/.oh-my-zsh/custom/aliases.zsh ; source ~/.oh-my-zsh/custom/aliases.zsh"
 alias vifun='e ~/.oh-my-zsh/custom/functions.zsh; source ~/.oh-my-zsh/custom/functions.zsh'
 alias vim="\nvim"
@@ -154,10 +166,13 @@ alias vv='vim "$(fzf)"'
 alias wakeup='xrandr --output HDMI-2 --mode 3840x2160 --right-of eDP-1'
 alias wtodo='nvim -n ~/Documents/work.todo.md'
 alias xz='\xz -T0'
+alias tags='git for-each-ref --format="%(objectname:short=5) | %(refname:short) | %(creatordate:format:%Y-%m-%d %H:%M)" "refs/tags/*"| sort -r'
+alias t='task'
 alias zshenv='nvim ~/.zshenv'
 alias zshrc='nvim ~/.zshrc'
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 alias yirc='e ~/.config/yabai/yabairc'
+alias ur='uv run'
 
 ignore-local() {
   dotgit="$(git rev-parse --show-toplevel)/.git"
@@ -175,23 +190,3 @@ mcd() {
   mkdir -p $1 && cd $1
 }
 
-mktask() {
-  name=${1//-/_}
-  cmd="${2}"
-
-  pre=""
-  if [ ! -f tasks.py ]; then
-    pre="from invoke import task\n"
-  fi
-
-  \cat <<EOF
-$pre
-@task
-def $name(c):
-    """Run ${1}"""
-    c.run("$cmd")
-EOF
-}
-
-WORK=~/dotfiles/oh-my-zsh/custom/aliases.work.zsh
-test -f $WORK && source $WORK

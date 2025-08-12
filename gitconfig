@@ -2,11 +2,14 @@
 path = ~/dotfiles/git_user
 
 [alias]
+h = rev-parse --short HEAD
 bb = !~/.local/bin/better-branch.sh
+nb = checkout -b
 br = branch
 ch = cherry-pick
 clone-head = clone --filter=tree:0
 cm = commit -m
+grn = grep -n 
 cmnv = commit --no-verify -m
 co = checkout
 dft = difftool
@@ -20,52 +23,14 @@ sw = switch
 w = grep -w
 wt = worktree
 
-# for pairing sessions where we want to just quickly sync working branch
-wip = commit -m "WIP" --no-verify
-
 forgot = commit --amend --no-edit
-forgotv = commit --no-verify --amend --no-edit
+nforgot = commit --no-verify --amend --no-edit
 recent = !git branch --color=always --sort=-committerdate | head -30
 tree = log --graph --decorate --pretty=oneline --abbrev-commit
-ticket = "!git sw -c \"$1/$2\" #"
 
-cleanup = "!git worktree prune; git delete-merged-branches ; git delete-squashed-branches"
+cleanup = "git delete-merged-branches ; git delete-squashed-branches"
 
-cart = "!git commit --no-verify -m \"🎨  $1\" #"
-cboom = "!git commit -m \"💥  $1\" #"
-cci = "!git commit -m \"💚  $1\" #"
-cconf = "!git commit -m \"🔧  $1\" #"
-cdead = "!git commit -m \"⚰️  $1\" #"
-cdepl = "!git commit -m \"🚀  $1\" #"
-cdev = "!git commit -m \"🔨 $1\" #"
-cdoc = "!git commit -m \"📝  $1\" #"
-cdocker = "!git commit -m \"🐳  $1\" #"
-cdowndep = "!git commit -m \"⬇️  $1\" #"
-cdx = "!git commit --no-verify -m \"🧑‍💻 $1\" #"
-cfeat = "!git commit -m \"🚩  $1\" #"
-cfix = "!git commit -m \"🐛 $1\" #"
-cgup = "!git commit -m \"⚡  $1\" #"
-chot = "!git commit -m \"🚑  $1\" #"
-cign = "!git commit -m \"🙈  $1\" #"
-cinf = "!git commit -m \"🧱 $1\" #"
-cinit = "!git init && git add . && git commit -m \"🎉 initial version\" #"
-clint = "!git commit -m \"🚨  $1\" #"
-clog = "!git commit -m \"🔊  $1\" #"
-cnew = "!git commit -m \"✨  $1\" #"
-cnewdep = "!git commit -m \"➕  $1\" #"
-cperf = "!git commit -m \"⚡️  $1\" #"
-cpr = "!git commit -m \"👌  $1\" #"
-cref = "!git commit --no-verify -m \"♻️  $1\" #"
-crem = "!git commit -m \"🔥  $1\" #"
-crev = "!git commit -m \"⏪  $1\" #"
-crmdep = "!git commit -m \"➖  $1\" #"
-csec = "!git commit -m \"🔒  $1\" #"
-ctest = "!git commit -m \"✅  $1\" #"
-ctext = "!git commit -m \"📝  $1\" #"
-ctypo = "!git commit -m \"✏️  $1\" #"
-cui = "!git commit -m \"💄  $1\" #"
-cupdep = "!git commit -m \"⬆️  $1\" #"
-cver = "!git commit -m \"🔖  $1\" #"
+# for pairing sessions where we want to just quickly sync working branch
 cwip = "!git commit --no-verify -m \"🚧  $1\" #"
 
 [githooks "autoupdate"]
@@ -78,10 +43,6 @@ pretty = "format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"
 
 [diff]
 colorMoved = dimmed-zebra
-# colorMoved = default
-# tool = difftastic
-# external = difft
-# algorithm = histogram
 
 [difftool]
 prompt = false
@@ -163,45 +124,47 @@ light = false
 commit-decoration-style = bold yellow box ul
 file-style = bold yellow ul
 file-decoration-style = none
+
 [init]
 defaultBranch = master
 templateDir = /Users/ed/.git-template
+
 [user]
 name = Edvard Majakari
 email = edvard@majakari.net
 signinkey = BE3BC84B3EFE1160DB31BB5E2693A2DF308230C7
 defaultBranch = master
-# templateDir = ~/.git-template
 
 [include]
 path = ~/dotfiles/git_user
 
 [includeIf "gitdir:~/Code/"]
 path = ~/Code/gitconfig
+
 [blame]
 markUnblamableLines = true
 
 [advice]
 macheteEditorSelection = false
+
 [commit]
-gpgsign = true
+gpgsign = false
+
 [credential]
-helper = /usr/local/share/gcm-core/git-credential-manager
 gpgsign = true
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
 [url "ssh://git@github.com/"]
 insteadOf = https://github.com/
+
 [branch]
 sort = -committerdate
+
 [column]
-ui = auto
+ui =never
 
 [color.status]
 untracked = brightyellow
 changed = brightblue
-[maintenance]
-repo = /home/emajakari/iceye/deployment-configurations
-repo = /home/emajakari/iceye/iceark
-[include]
-path = ~/dotfiles/local/git.config
-[credential]
-helper = /usr/local/share/gcm-core/git-credential-manager
+

@@ -3,7 +3,8 @@
 
 # Editors
 .vscode
-.idea
+.idea/*
+!.idea/runConfigurations/
 .vimsession
 Session.vim
 /.tags*
@@ -12,7 +13,6 @@ Session.vim
 .DS_Store
 
 # Python
-.python-version
 .mypy_cache/
 .py[cod]
 **/__pycache__/
@@ -29,13 +29,6 @@ venv/
 
 # Local stuff
 local/
-/*.todo.md
 
-# git worktrees
-git-wt-*/
-
-.myenv
-
-.ngrok-*
 .env
-.env.local
+.envrc
