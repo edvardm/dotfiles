@@ -132,7 +132,11 @@ templateDir = /Users/ed/.git-template
 [user]
 name = Edvard Majakari
 email = edvard@majakari.net
+{% if yadm.os == "Darwin" %}
 signingkey = BE3BC84B3EFE1160DB31BB5E2693A2DF308230C7
+{% else %}
+# signingkey configured via local git.config
+{% endif %}
 defaultBranch = master
 
 [include]

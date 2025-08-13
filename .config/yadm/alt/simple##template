@@ -1,0 +1,6 @@
+OS is: {{ yadm.os }}
+{% if yadm.os == "Darwin" %}
+This is macOS
+{% else %}
+This is not macOS
+{% endif %}

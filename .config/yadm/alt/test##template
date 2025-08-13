@@ -1,0 +1,1 @@
+Test: {% if yadm.os == "Darwin" %}Darwin detected{% endif %}

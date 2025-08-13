@@ -3,6 +3,8 @@
 # Large/generated content
 **/node_modules/
 **/*.log
+**/log/
+**/logs/
 **/*.db
 **/*.sqlite
 **/*.cache
