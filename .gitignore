@@ -1,10 +1,30 @@
-.venv/
-local/
+**/.venv/
+**/local/
+**/.git/
 
-oh-my-zsh/custom/plugins/
-oh-my-zsh/custom/themes/
-git_user
-internal.zsh
-oh-my-zsh/custom/example.zsh
-nvim/old
-plugin/packer_compiled.lua
+# Large/generated content
+**/node_modules/
+**/*.log
+**/*.db
+**/*.sqlite
+**/*.cache
+**/cache/
+**/Cache/
+
+# Session/runtime data
+**/*session*
+**/*history*
+
+# App-managed/machine-specific
+github-copilot/
+raycast/extensions/
+configstore/
+op/
+refact/
+mise/
+yarn/global/node_modules/
+
+oh-my-zsh/
+!oh-my-zsh/custom/
+
+cheat/cheatsheets/community/
