@@ -1,0 +1,45 @@
+---
+show-summary: true
+show-tags: true
+show-fundamentals: true
+show-separator: true
+show-holdings: true
+sort: alpha
+interval: 8
+currency: EUR
+watchlist:
+  - ETH-USD
+  - DOGE-USD
+  - TSLA
+  - NVDA
+  - AMD
+  - HYMTF
+lots:
+  - symbol: "NOKIA.HE"
+    quantity: 566
+    unit_cost: 2.3
+  - symbol: "BTC-USD"
+    quantity: 0.141134
+    unit_cost: 500
+  - symbol: "VERK.HE"
+    quantity: 440
+    unit_cost: 3.28
+  - symbol: "LEHTO.HE"
+    quantity: 5827
+    unit_cost: 1.73
+  - symbol: "WEED.TO"
+    quantity: 20
+    unit_cost: 9.41
+  - symbol: "NAS.OL"
+    quantity: 750
+    unit_cost: 1.04
+  - symbol: "VALOE.HE"
+    quantity: 9548
+    unit_cost: 0.08
+  - symbol: "NDA-FI.HE"
+    quantity: 180
+    unit_cost: 7.27
+  - symbol: "ABB.ST"
+    quantity: 4
+    unit_cost: 217.25
+

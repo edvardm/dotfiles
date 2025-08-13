@@ -1,0 +1,13 @@
+---
+session_name: starter
+windows:
+  - focus: "true"
+    layout: 7b73,165x80,0,0[165x39,0,0{82x39,0,0,7,82x39,83,0,11},165x40,0,40,9]
+    options: {}
+    panes:
+      - ls
+      - focus: "true"
+        shell_command: ipython
+      - git status
+start_directory: /Users/ed/work/wolt/personalisation-api
+window_name: pepi

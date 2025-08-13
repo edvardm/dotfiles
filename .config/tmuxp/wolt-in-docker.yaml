@@ -1,0 +1,17 @@
+session_name: wolt-in-docker
+windows:
+- focus: 'true'
+  layout: bfbd,183x60,0,0{92x60,0,0,60,90x60,93,0[90x29,93,0,61,90x30,93,30,62]}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /Users/ed/work/wolt/wolt-in-docker
+    - Python
+  - shell_command:
+    - cd /Users/ed/work/wolt/wolt-in-docker
+    - zsh
+  - shell_command:
+    - cd /Users/ed/work/wolt/payment-service
+    - zsh
+  window_name: editor

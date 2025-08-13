@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Exit on any error
+set -eu
+
+# --- Spam ---
+notmuch tag +spam -inbox -unread -- 'X-Spam-Flag: YES'
+notmuch tag +spam -inbox -unread -- 'folder:Junk'
+
+notmuch tag +jan-henry -inbox -- 'from:jan-henr*'
+notmuch tag +github -inbox -- 'from:github.com'
+notmuch tag +nordnet -inbox -- 'from:nordnet.fi'
+
+notmuch tag +guitar -inbox -- "from:jasonstallworthguitaracademy.com"
+
+notmuch tag +newsletter -inbox -- 'from:news.* OR from:mailer.* OR from:email.*'
+
+# --- Bot/automated notifications ---
+notmuch tag +bots -inbox -- 'from:*google.com OR from:*googleplay.com OR from:*accounts.google.com'
+notmuch tag +bots -inbox -- 'from:*bitwarden.com'
+notmuch tag +bots -inbox -- 'from:*linkedin.com'
+notmuch tag +bots -inbox -- 'from:*apple.com OR from:*icloud.com'
+notmuch tag +bots -inbox -- 'from:*amazon.com OR from:*amazon.de'
+notmuch tag +bots -inbox -- 'from:*duolingo.com'
+notmuch tag +bots -inbox -- 'from:*logitech.com'
+
+notmuch tag +list -- 'list:'
+notmuch tag -new -- tag:new
+
+# --- (Optional) mark duplicates, if desired ---
+notmuch tag +duplicate -- 'duplicate:true'
+
+# --- Auto-archive old messages ---
+notmuch tag +archive -inbox -- 'tag:inbox and date:..2months'
+
+# --- Tag replies ---
+notmuch tag +replied -- 'tag:sent and thread:{tag:inbox}'
+
+# --- Remove inbox from mailing lists after reading ---
+notmuch tag -inbox -- 'tag:list and NOT tag:unread'
+
+# --- Tag attachments ---
+notmuch tag +attachment -- 'attachment:".*"'

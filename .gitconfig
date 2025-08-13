@@ -1,0 +1,169 @@
+[include]
+path = ~/dotfiles/git_user
+
+[alias]
+h = rev-parse --short HEAD
+bb = !~/.local/bin/better-branch.sh
+nb = checkout -b
+br = branch
+ch = cherry-pick
+clone-head = clone --filter=tree:0
+cm = commit -m
+grn = grep -n 
+cmnv = commit --no-verify -m
+co = checkout
+dft = difftool
+dsm = diff --stat origin/master
+gr = grep
+ma = machete
+rb = rebase --update-refs
+rc = rebase --continue
+staash = stash --all
+sw = switch
+w = grep -w
+wt = worktree
+
+forgot = commit --amend --no-edit
+nforgot = commit --no-verify --amend --no-edit
+recent = !git branch --color=always --sort=-committerdate | head -30
+tree = log --graph --decorate --pretty=oneline --abbrev-commit
+
+cleanup = "git delete-merged-branches ; git delete-squashed-branches"
+
+# for pairing sessions where we want to just quickly sync working branch
+cwip = "!git commit --no-verify -m \"🚧  $1\" #"
+
+[githooks "autoupdate"]
+lastrun = 1553681835
+
+[log]
+date = iso
+[format]
+pretty = "format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"
+
+[diff]
+colorMoved = dimmed-zebra
+
+[difftool]
+prompt = false
+
+[difftool "meld"]
+cmd = meld "$LOCAL" "$REMOTE"
+
+[difftool "difftastic"]
+cmd = difft "$LOCAL" "$REMOTE"
+
+[core]
+excludesfile = ~/.gitignore_global
+ignorecase = false
+pager = delta
+[pager]
+# difftool = true
+
+[color "diff-highlight"]
+oldNormal = red bold
+oldHighlight = red bold 52
+newNormal = green bold
+newHighlight = green bold 22
+
+[color "diff"]
+meta = yellow
+frag = magenta bold
+commit = yellow bold
+old = red bold
+new = green bold
+whitespace = red reverse
+
+[color]
+ui = auto
+
+[color "grep"]
+linenumber = yellow bold
+match = green bold
+filename = yellow bold
+
+[rerere]
+enabled = true
+
+[pull]
+rebase = true
+twohead = ort
+
+[rebase]
+autoStash = true
+updateRefs = true
+autosquash = true
+
+[filter "lfs"]
+process = git-lfs filter-process
+required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+
+[fetch]
+prune = true
+
+[include]
+path = ~/dotfiles/local/git.config
+
+[interactive]
+diffFilter = delta --color-only --features=interactive
+
+[add.interactive]
+useBuiltin = false
+
+[delta]
+whitespace-error-style = 22 reverse
+line-numbers = true
+side-by-side = true
+decorations = true
+navigate = true
+light = false
+
+[delta "decorations"]
+commit-decoration-style = bold yellow box ul
+file-style = bold yellow ul
+file-decoration-style = none
+
+[init]
+defaultBranch = master
+templateDir = /Users/ed/.git-template
+
+[user]
+name = Edvard Majakari
+email = edvard@majakari.net
+signingkey = BE3BC84B3EFE1160DB31BB5E2693A2DF308230C7
+defaultBranch = master
+
+[include]
+path = ~/dotfiles/git_user
+
+[includeIf "gitdir:~/Code/"]
+path = ~/Code/gitconfig
+
+[blame]
+markUnblamableLines = true
+
+[advice]
+macheteEditorSelection = false
+
+[commit]
+gpgsign = false
+
+[credential]
+gpgsign = true
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[url "ssh://git@github.com/"]
+insteadOf = https://github.com/
+
+[branch]
+sort = -committerdate
+
+[column]
+ui =never
+
+[color.status]
+untracked = brightyellow
+changed = brightblue

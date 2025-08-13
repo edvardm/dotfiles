@@ -1,0 +1,81 @@
+# setup script for new machines
+#!/bin/bash
+
+set -eu 
+
+YADM_REPO="$(yadm introspect repo)"
+
+echo "🚀 Starting yadm bootstrap..."
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "📦 Installing macOS packages..."
+    
+    if ! command -v brew &> /dev/null; then
+        echo "Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    
+    echo "Installing packages from Brewfile..."
+    brew bundle --file="$YADM_REPO/.yadm/Brewfile"
+elif command -v paru &> /dev/null; then
+    echo "📦 Installing Arch Linux packages..."
+    if [[ -f "$YADM_REPO/.yadm/arch-packages.txt" ]]; then
+        paru -S --needed - < "$YADM_REPO/.yadm/arch-packages.txt"
+    else
+        echo "⚠️  arch-packages.txt not found"
+    fi
+elif command -v pacman &> /dev/null; then
+    echo "📦 Arch Linux detected but paru not installed"
+    echo "Installing paru..."
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
+    cd /tmp/paru
+    makepkg -si
+    cd -
+    rm -rf /tmp/paru
+fi
+
+echo "🐚 Setting up shell integrations..."
+
+if command -v atuin &> /dev/null; then
+    if ! grep -q "atuin init" ~/.zshrc 2>/dev/null; then
+        echo "Adding atuin to .zshrc..."
+        echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+    fi
+else
+    echo "⚠️  Atuin not installed, skipping shell integration"
+fi
+
+if command -v starship &> /dev/null; then
+    if ! grep -q "starship init" ~/.zshrc 2>/dev/null; then
+        echo "Adding starship to .zshrc..."
+        echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+    fi
+fi
+
+echo "🔧 Setting up applications..."
+
+echo ""
+echo "📝 Manual setup required:"
+echo "  1. Import GPG keys for git signing & pass:"
+echo "     gpg --import /path/to/private.key"
+echo ""
+echo "  2. Trust the key:"
+echo "     gpg --edit-key <KEY_ID>"
+echo "     > trust"
+echo "     > 5"
+echo "     > quit"
+
+if [[ ! -d ~/.password-store ]]; then
+    echo ""
+    echo "  3. Clone your password store:"
+    echo "     git clone <your-pass-repo> ~/.password-store"
+else
+    echo "✅ Password store already exists"
+fi
+
+echo ""
+echo "✅ Bootstrap complete!"
+echo ""
+echo "Next steps:"
+echo "  1. Restart your shell or run: source ~/.zshrc"
+echo "  2. Complete manual setup steps above"

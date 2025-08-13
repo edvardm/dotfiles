@@ -1,0 +1,79 @@
+# vim: filetype=muttrc
+
+# set folder = ~/Mail/majakari
+set virtual_spoolfile = yes
+set nm_default_uri="notmuch:///Users/ed/Mail"
+
+# Set base directories
+set record = +Sent
+set postponed = +Drafts
+
+# Use notmuch backend
+set mail_check = 900
+set mbox_type = Maildir
+
+# Define virtual folders using notmuch queries
+virtual-mailboxes \
+        "incoming"  "notmuch://?query=tag:inbox and NOT tag:archive"\
+        "unread"    "notmuch://?query=tag:unread"\
+        "flagged"   "notmuch://?query=tag:flagged"\
+        "today"     "notmuch://?query=date:today"\
+        "week"      "notmuch://?query=date:7days.. and NOT tag:spam"\
+        "github"   "notmuch://?query=tag:github"\
+        "nordnet"   "notmuch://?query=tag:nordnet"\
+        "jan-henry"   "notmuch://?query=tag:jan-henry"\
+        "guitar"   "notmuch://?query=tag:guitar"\
+        "bots"   "notmuch://?query=tag:bots"\
+        "old"   "notmuch://?query=tag:archive OR tag:imported"\
+        "list"   "notmuch://?query=tag:list"\
+        "newsletter"   "notmuch://?query=tag:newsletter"\
+        "sent"      "notmuch://?query=tag:Sent"\
+        "spam"      "notmuch://?query=tag:spam"
+
+# sets up queries for virtual folders
+
+# Sidebar
+set sidebar_visible = yes
+set sidebar_width = 30
+set sidebar_short_path = yes
+set sidebar_format = "%D%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_divider_char = "│"
+set sidebar_folder_indent = no
+bind index \CB sidebar-prev
+bind index \CN sidebar-next
+
+# Pager & UI
+set pager_index_lines = 10
+set pager_context = 3
+set markers = no
+set smart_wrap = yes
+# set tilde = no
+set sort = threads
+set sort_aux = last-date-received
+
+# Colours
+# source ~/.config/neomutt/themes/zenburn.neomuttrc
+source ~/.config/neomutt/themes/spacechalk.muttrc
+
+# Use GPG agent
+set crypt_use_gpgme = yes
+set crypt_autosign = no
+
+# Compose
+set editor = "nvim"
+
+# Sending mail
+set sendmail = "/opt/homebrew/bin/msmtp"
+set use_from = yes
+set envelope_from = yes
+set from = "edvard@majakari.net"
+set realname = "Edvard Majakari"
+
+# Display settings
+set index_format="%4C %Z %[!%Y-%m-%d %H:%M] %-20.20F %?M?[%M]&? %s%?y? [%Y]?"
+set status_format="📬 %f [%s msgs, %d new]"
+set to_chars=" +TCFL"  # Clearer thread indicators
+
+# Use XDG locations for aliases/hooks/macros
+source ~/.config/neomutt/macros/notmuch.macros
+

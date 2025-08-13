@@ -1,0 +1,211 @@
+# Brewfile - Package definitions for macOS
+# Generated from current system and annotated with descriptions
+
+# ================================
+# Taps (Third-party repositories)
+# ================================
+tap "achannarasappa/tap"         # Ticker - stock market terminal UI
+tap "apenngrace/vulkan"          # Vulkan SDK and tools
+tap "cue-lang/tap"               # CUE data validation language
+tap "jesseduffield/lazygit"      # LazyGit terminal UI
+tap "kowainik/tap"               # Haskell tools (summoner, stan)
+tap "michaeleisel/zld"           # ZLD - faster linker for Xcode
+tap "muesli/tap"                 # Duf, glow, and other CLI tools
+tap "nikitabobko/tap"            # AeroSpace - tiling window manager
+tap "pantsbuild/tap"             # Pants build system
+tap "sargsyan/github-notifier"   # GitHub notifications in menu bar
+tap "scarvalhojr/tap"            # Advent of Code CLI
+tap "servicex-sh/tap"            # httpx - HTTP toolkit
+tap "thought-machine/please"     # Please build system
+tap "virtuslab/git-machete"      # Git machete - branch workflow tool
+tap "xo/xo"                      # usql - universal SQL client
+
+# ================================
+# Development Tools
+# ================================
+
+# CI/CD & Testing
+brew "act"                      # Run GitHub Actions locally
+brew "actionlint"               # GitHub Actions workflow linter
+brew "checkmake"                # Makefile linter
+brew "hadolint"                 # Dockerfile linter
+
+# Shell & Terminal Tools
+brew "shellcheck"               # Shell script linter
+brew "shfmt"                    # Shell script formatter
+brew "bash-language-server"     # LSP for bash
+brew "zsh-syntax-highlighting"  # Fish-like syntax highlighting for zsh
+brew "starship"                 # Cross-shell prompt
+brew "atuin"                    # Sync shell history across machines
+brew "tmux"                     # Terminal multiplexer
+brew "tmuxp"                    # tmux session manager
+
+# File & Directory Tools
+brew "bat"                      # Cat with syntax highlighting
+brew "eza"                      # Modern ls replacement
+brew "fd"                       # Fast find alternative
+brew "fzf"                      # Fuzzy finder
+brew "ripgrep"                  # Fast grep alternative (rg)
+brew "sd"                       # Fast sed alternative
+brew "zoxide"                   # Smarter cd command
+brew "dust"                     # More intuitive du
+brew "duf"                      # Better df alternative
+
+# Git & Version Control
+brew "git"                      # Version control
+brew "git-extras"               # Extra git commands
+brew "git-lfs"                  # Large file storage
+brew "git-machete"              # Git workflow automation
+brew "git-crypt"                # Transparent file encryption in git
+brew "gitleaks"                 # Detect secrets in git repos
+brew "gh"                       # GitHub CLI
+brew "glow"                     # Markdown renderer for terminal
+
+# Container & Kubernetes Tools
+brew "dive"                     # Docker image explorer
+brew "lazydocker"               # Terminal UI for docker
+brew "k3d"                      # Lightweight k8s in docker
+brew "k9s"                      # Terminal UI for Kubernetes
+brew "kubie"                    # Kubernetes context switcher
+brew "skaffold"                 # Kubernetes development workflow
+
+# Programming Languages & Tools
+brew "nvm"                      # Node version manager
+brew "pnpm"                     # Fast, disk space efficient package manager
+brew "rustup"                   # Rust installer and version manager
+brew "sccache"                  # Shared compilation cache
+brew "ghcup"                    # Haskell toolchain installer
+brew "lua-language-server"      # Lua LSP
+
+# Database Tools
+brew "dbmate"                   # Database migration tool
+brew "pgcli"                    # PostgreSQL CLI with autocomplete
+brew "usql"                     # Universal database CLI
+
+# Text Processing & Data Tools
+brew "jq"                       # JSON processor
+brew "yq"                       # YAML processor
+brew "jless"                    # JSON viewer
+brew "xsv"                      # CSV toolkit
+brew "pandoc"                   # Document converter
+brew "xh"                       # Friendly HTTP client (httpie alternative)
+
+# Configuration & Secret Management
+brew "direnv"                   # Per-directory environment variables
+brew "age"                      # File encryption tool
+brew "pass"                     # Unix password manager
+brew "gnupg"                    # GPG encryption
+brew "yadm"                     # Dotfiles manager
+
+# Infrastructure & Cloud Tools
+brew "ansible"                  # Automation tool
+brew "cue"                      # Data validation language
+
+# System Monitoring & Performance
+brew "bottom"                   # System monitor (btm)
+brew "procs"                    # Modern ps replacement
+brew "hyperfine"                # Command-line benchmarking
+brew "pstree"                   # Process tree viewer
+brew "watchexec"                # Execute commands on file change
+brew "entr"                     # Run commands on file change
+
+# Network Tools
+brew "nmap"                     # Network exploration tool
+brew "netcat"                   # Network utility
+brew "prettyping"               # Pretty ping output
+brew "dnsmasq"                  # DNS forwarder
+
+# Email & Communication
+brew "neomutt"                  # Terminal email client
+brew "isync"                    # IMAP synchronization (mbsync)
+brew "notmuch"                  # Email indexer
+
+# Utility Tools
+brew "coreutils"                # GNU core utilities
+brew "findutils"                # GNU find, xargs, locate
+brew "gnu-sed"                  # GNU sed
+brew "gnu-tar"                  # GNU tar
+brew "gawk"                     # GNU awk
+brew "grep"                     # GNU grep
+brew "pv"                       # Pipe viewer (progress bar)
+brew "hexyl"                    # Hex viewer
+brew "difftastic"               # Structural diff tool
+brew "editorconfig-checker"     # EditorConfig linter
+brew "blueutil"                 # Bluetooth CLI
+brew "showkey"                  # Display key codes
+brew "topgrade"                 # Upgrade all the things
+
+# Third-party formulas
+brew "ticker"                   # Stock ticker terminal UI
+brew "skhd"                     # Hotkey daemon for macOS
+brew "github-notifier"          # GitHub notification in menu bar
+brew "aoc-cli"                  # Advent of Code CLI
+
+# ================================
+# macOS Applications (Casks)
+# ================================
+
+# Window Management
+cask "aerospace"                # Tiling window manager
+cask "karabiner-elements"       # Keyboard customizer
+
+# Terminals & Shells
+cask "wezterm"                  # GPU-accelerated terminal
+cask "cool-retro-term"          # Retro terminal emulator
+
+# Development Tools
+cask "visual-studio-code"       # Code editor
+cask "jetbrains-toolbox"        # JetBrains IDE manager
+cask "dash"                     # API documentation browser
+
+# Productivity
+cask "raycast"                  # Launcher & productivity tool
+cask "obsidian"                 # Knowledge base
+
+# Communication
+cask "discord"                  # Chat & voice communication
+cask "slack"                    # Team communication (via mas)
+
+# Browsers
+cask "brave-browser"            # Privacy-focused browser
+
+# Security & Privacy
+cask "gpgfrontend"              # GPG frontend
+cask "git-credential-manager"   # Git credential helper
+
+# Media
+cask "vlc"                      # Media player
+cask "obs"                      # Open broadcaster software
+
+# Utilities
+cask "macfuse"                  # User-space file system
+cask "logitech-camera-settings" # Logitech webcam settings
+
+# Development Runtimes
+cask "vulkan-sdk"               # Vulkan graphics SDK
+
+# Fonts
+cask "font-fira-code"           # Monospace font with ligatures
+cask "font-fira-code-nerd-font" # Fira Code with icons
+cask "font-hack"                # Monospace font
+cask "font-hack-nerd-font"      # Hack with icons
+cask "font-hasklig"             # Haskell ligatures font
+cask "font-meslo-lg-nerd-font"  # Meslo LG with icons
+
+# Other Applications
+cask "chalk"                    # Terminal string styling
+cask "quarto"                   # Scientific publishing system
+cask "sweet-home3d"             # Interior design software
+
+# ================================
+# Mac App Store Applications
+# ================================
+mas "Amphetamine", id: 937984704        # Keep Mac awake
+mas "Be Focused", id: 973134470         # Pomodoro timer
+mas "Bitwarden", id: 1352778147         # Password manager
+mas "FlatTomato", id: 1286489308        # Pomodoro timer
+mas "GarageBand", id: 682658836         # Music creation
+mas "Hue Essentials", id: 1462943921    # Philips Hue control
+mas "Slack", id: 803453959              # Team communication
+mas "World Clock", id: 956377119        # World clock widget
+mas "Xcode", id: 497799835              # Apple development IDE

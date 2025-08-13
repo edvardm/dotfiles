@@ -1,0 +1,34 @@
+.direnv/
+.vagrant/
+
+# Editors
+.vscode
+.idea/*
+!.idea/runConfigurations/
+.vimsession
+Session.vim
+/.tags*
+
+# Macos
+.DS_Store
+
+# Python
+.mypy_cache/
+.py[cod]
+**/__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+/dist/
+.pytype/
+/.coverage
+.dmypy.json
+**/*.egg-info/
+.ruff_cache/
+
+# Local stuff
+local/
+
+.env
+.envrc

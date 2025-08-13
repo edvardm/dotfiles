@@ -1,0 +1,40 @@
+# ~/.config/.gitignore - Exclude files from yadm tracking
+
+# Large/generated content
+**/node_modules/
+**/*.log
+**/*.db
+**/*.sqlite
+**/*.cache
+**/[Cc]ache/
+
+# Session/runtime data
+**/*session*
+**/*history*
+**/*.sock
+**/*.pid
+**/*.lock
+
+# App-managed/machine-specific
+github-copilot/
+raycast/extensions/
+op/
+pgcli/history
+cheat/cheatsheets/community/
+mise/
+iterm2/
+
+
+# Temporary/backup files
+**/*.bak
+**/*.tmp
+**/*.swp
+**/*~
+**/.DS_Store
+
+# Private/sensitive data (extra safety)
+**/secrets
+**/credentials
+**/*.key
+**/*.pem
+**/*.crt

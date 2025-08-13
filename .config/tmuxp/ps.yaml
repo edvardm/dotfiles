@@ -1,0 +1,11 @@
+---
+session_name: r-api
+start_directory: ~/work/wolt/payment-service
+windows:
+  - window_name: editing
+    layout: main-horizontal
+    focus: true
+    panes:
+      - blank
+      - git status
+      - ls

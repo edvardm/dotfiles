@@ -1,0 +1,11 @@
+---
+session_name: spad
+windows:
+  - window_name: main
+    layout: main-horizontal
+    start_directory: ~/scratch
+    panes:
+      - shell_command: ytop
+      - shell_command: ls
+      - shell_command: uptime
+

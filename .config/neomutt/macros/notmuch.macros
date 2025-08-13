@@ -1,0 +1,22 @@
+macro index \cu "<limit> tag:unread<enter>" "Limit to unread"
+macro index \ci "<limit> tag:inbox<enter>" "Limit to inbox"
+macro index \cg "<limit> tag:github<enter>" "Limit to GitHub"
+macro index \cs "<limit> tag:spam<enter>" "Limit to spam"
+macro index \ca "<limit> tag:archive<enter>" "Limit to archived"
+macro index \cl "<limit> tag:list<enter>" "Limit to lists"
+macro index \cx "<limit><enter>" "Clear limit"
+
+macro index \ea "<tag-pattern>~d >3m<enter><tag-prefix><modify-labels>-inbox +archive<enter><sync-mailbox>" "Archive old messages"
+
+# Quick actions
+macro index A "<modify-labels>-inbox +archive\n<sync-mailbox>" "Archive message"
+macro index S "<modify-labels>+spam -inbox\n<sync-mailbox>" "Mark as spam"
+macro index I "<modify-labels>+inbox -archive\n<sync-mailbox>" "Move to inbox"
+
+# Quick searches
+macro index \cf "<vfolder-from-query>from:" "Search sender"
+
+# Reload configuration
+macro index R ":source ~/.config/neomutt/neomuttrc\n" "Reload configuration"
+macro index \ct "<vfolder-from-query>date:" "Search by date"
+

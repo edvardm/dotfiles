@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+export PATH="/usr/local/bin:$HOME/.local/bin:$HOME/bin:/opt/homebrew/bin:$PATH"
+
+# Sync mail and index it
+mbsync -a && notmuch new
+
+# Apply tags
+"$HOME/.local/bin/notmuch-tag-mail"
+

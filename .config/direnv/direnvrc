@@ -1,0 +1,27 @@
+layout_poetry() {
+  if [[ ! -f pyproject.toml ]]; then
+    log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one first.'
+    exit 2
+  fi
+
+  # create venv if it doesn't exist
+  poetry run true
+
+  export VIRTUAL_ENV=$(poetry env info --path)
+  export POETRY_ACTIVE=1
+  PATH_add "$VIRTUAL_ENV/bin"
+}
+
+# Override the direnv stdlib function to print with "normal" color
+log_status() {
+    if [[ -n $DIRENV_LOG_FORMAT ]]; then
+      local msg=$*
+      local color_normal
+      color_normal=$(tput sgr0)
+      # shellcheck disable=SC2059,SC1117
+      printf "${color_normal}${DIRENV_LOG_FORMAT}\n" "$msg" >&2
+    fi
+}
+
+# Print everything in stderr in red
+exec 2> >( sed $'s,.*,\e[31m&\e[m,' >&2 )

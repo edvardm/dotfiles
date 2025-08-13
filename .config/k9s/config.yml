@@ -1,0 +1,51 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 3
+  enableMouse: false
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: false
+  noExitOnCtrlC: false
+  noIcons: false
+  skipLatestRevCheck: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 300
+    fullScreenLogs: false
+    textWrap: false
+    showTime: true
+  currentContext: flyte-dev
+  currentCluster: arn:aws:eks:eu-west-1:570119709565:cluster/flyte
+  clusters:
+    arn:aws:eks:eu-west-1:570119709565:cluster/flyte:
+      namespace:
+        active: flyte-carousel-ranking-development
+        lockFavorites: false
+        favorites:
+        - flyte-carousel-ranking-development
+        - all
+        - default
+      view:
+        active: po
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: /var/folders/n0/7mwngmmx26755_0dc1xvkq2m0000gn/T/k9s-screens-ed
