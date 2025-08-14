@@ -40,3 +40,4 @@ iterm2/
 **/*.key
 **/*.pem
 **/*.crt
+tmux/plugins

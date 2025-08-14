@@ -1,0 +1,10 @@
+# OS-specific git configuration
+# This file contains settings that vary by operating system
+
+[user]
+    # GPG signing key (macOS)
+    signingkey = BE3BC84B3EFE1160DB31BB5E2693A2DF308230C7
+
+[commit]
+    # Enable GPG signing on macOS (disable on Linux if needed)
+    gpgsign = false

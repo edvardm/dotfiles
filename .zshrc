@@ -101,12 +101,6 @@ test -f ~/work/aliases && . ~/work/aliases
 # complete ssh hosts by alias, not full hostname
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts
 
-# qlty completions
-[ -s "/usr/local/share/zsh/site-functions/_qlty" ] && source "/usr/local/share/zsh/site-functions/_qlty"
-
-# qlty
-export QLTY_INSTALL="$HOME/.qlty"
-export PATH="$QLTY_INSTALL/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/Users/ed/Library/pnpm"
@@ -116,8 +110,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-export CARAPACE_BRIDGES='zsh,bash' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
+eval $(bob complete zsh)
+test -d ~/.claude && alias cl=~/.claude/local/claude
 
-alias claude="/Users/ed/.claude/local/claude"
