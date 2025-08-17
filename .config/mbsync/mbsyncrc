@@ -24,28 +24,3 @@ SyncState *
 Expunge Both
 Sync All
 
-# olg G suite Mail (was old edvard@majakari.net)
-# IMAPAccount gmail-old
-# Host imap.gmail.com
-# User edvard@majakari.net
-# PassCmd "pass show email/gmail-edvard.majakari"
-# Port 993
-# TLSType IMAPS
-# AuthMechs LOGIN
-#
-# IMAPStore gmail-old-remote
-# Account gmail-old
-#
-# MaildirStore gmail-old-local
-# Path ~/Mail/gmail-old/
-# Inbox ~/Mail/gmail-old/INBOX
-# SubFolders Verbatim
-#
-# Channel gmail-old
-# Far :gmail-old-remote:
-# Near :gmail-old-local:
-# Patterns *
-# Create Near
-# SyncState *
-# Expunge Both
-# Sync All
