@@ -52,3 +52,6 @@ require("lazy").setup({
     },
   },
 })
+
+-- Load taskfile utilities
+require("config.taskfile")

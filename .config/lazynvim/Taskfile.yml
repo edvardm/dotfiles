@@ -1,0 +1,20 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  luacheck:
+    desc: Run luacheck for static analysis
+    cmd: luacheck --quiet --codes --ranges .
+
+  stylua:
+    desc: Check formatting with stylua
+    cmd: stylua --check .
+
+  stylua-fix:
+    desc: Fix formatting with stylua
+    cmd: stylua .
+
+  lint:
+    desc: Run all linting checks (luacheck + stylua)
+    deps: [luacheck, stylua]
