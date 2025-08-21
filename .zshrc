@@ -95,9 +95,6 @@ source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 test -f ~/work/aliases && . ~/work/aliases
 
-. "$HOME/.cargo/env"
-
-
 # complete ssh hosts by alias, not full hostname
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts
 

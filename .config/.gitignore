@@ -41,3 +41,5 @@ iterm2/
 **/*.pem
 **/*.crt
 tmux/plugins
+git/
+.claude/

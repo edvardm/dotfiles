@@ -36,4 +36,5 @@ export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
-. "$HOME/.cargo/env"
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+test -d $HOME/.cargo/env && . "$HOME/.cargo/env"
