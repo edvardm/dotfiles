@@ -9,7 +9,10 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+    # Setup workspace 4 on external monitor with 2 WezTerms and Brave
+    'exec-and-forget /bin/bash -c "if aerospace list-monitors | grep -q secondary; then aerospace workspace 4 && sleep 1 && open -a WezTerm && sleep 1 && open -na WezTerm && sleep 1 && open -a Brave\ Browser && sleep 2 && aerospace layout tiles; fi"'
+]
 
 # Start AeroSpace at login
 start-at-login = false
@@ -169,3 +172,25 @@ alt-shift-l = ['join-with right', 'mode main']
 down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
+
+
+# Auto-layout for workspace 4 with WezTerm and Brave
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = 'move-node-to-workspace 4'
+
+# Enforce workspace-to-monitor assignments
+[workspace-to-monitor-force-assignment]
+1 = 'built-in'
+2 = 'built-in'
+3 = 'built-in'
+4 = '^(?!built-in).*'  # Any non-built-in monitor
+5 = '^(?!built-in).*'
+6 = '^(?!built-in).*'
+7 = '^(?!built-in).*'
+8 = '^(?!built-in).*'
+9 = '^(?!built-in).*'
