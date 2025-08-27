@@ -1,0 +1,27 @@
+directory: ~/Music/Tracks
+library: ~/.config/beets/library.db
+import: 
+  copy: no
+  move: yes
+  from_scratch: yes
+  timid: no
+paths:
+  default: $albumartist-$title
+  singleton: Non-Album/$artist/$title
+  comp: Compilations/$album/$title
+  
+replace:
+  ' ': _
+plugins: inline chroma fromfilename edit fetchart
+
+edit:
+  itemfields: track title artist album
+match:
+  strong_rec_thresh: 0.15
+
+fetchart:
+    cautious: true
+    cover_names: front back
+    sources: itunes *
+
+
