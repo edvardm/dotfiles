@@ -3,23 +3,24 @@ return {
   opts = {
     window = {
       mappings = {
-        ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = false } },
+        ["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = false } },
       },
     },
     filesystem = {
-      window = {
-        -- Make preview window smaller
-        popup = {
-          size = {
-            height = "10%", -- Smaller height
-            width = "10%", -- Smaller width
-          },
-        },
+      use_libuv_file_watcher = true,
+      filtered_items = {
+        visible = false,
+        hide_dotfiles = false,
+        hide_gitignored = false,
       },
-      -- Uncomment to disable image preview completely:
+      -- Disable all preview functionality
+      preview = {
+        enabled = false,
+      },
       commands = {
+        -- Override preview command to do nothing
         toggle_preview = function(_state)
-          -- Override to disable image preview
+          -- Disabled - do nothing
         end,
       },
     },
