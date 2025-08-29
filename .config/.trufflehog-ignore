@@ -1,0 +1,5 @@
+\.git
+CHANGELOG.*
+.*lazy-lock\.json
+lazynvim/lazy-lock\.json
+tmux/plugins

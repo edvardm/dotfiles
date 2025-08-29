@@ -1,0 +1,24 @@
+sort_order = [
+  "tmuxp",  # show first
+  "config",
+  "tmux",
+  "zoxide",
+]
+
+[default_session]
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "ls"
+
+[[session]]
+name = "tmux config"
+path = "~/.config/tmux"
+startup_command = "nvim tmux.conf"
+preview_command = "bat --color=always ~/.config/tmux/tmux.conf"
+
+[[session]]
+name = "lazyvim config"
+path = "~/.config/lazyvim"

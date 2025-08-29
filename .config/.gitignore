@@ -44,3 +44,4 @@ tmux/plugins
 git/
 .claude/
 **/*.pickle
+**/.pijul/
