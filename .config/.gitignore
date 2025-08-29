@@ -42,6 +42,7 @@ iterm2/
 **/*.crt
 tmux/plugins
 git/
-.claude/
+**/.claude/
+**/CLAUDE.md
 **/*.pickle
 **/.pijul/
