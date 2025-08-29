@@ -43,3 +43,4 @@ iterm2/
 tmux/plugins
 git/
 .claude/
+**/*.pickle

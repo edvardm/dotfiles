@@ -3,11 +3,11 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export PATH=~/.cargo/bin:~/.local/bin:~/.ghcup/bin:~/.cabal/bin:/usr/local/bin:/usr/local/sbin:${PATH}
+PATH=~/.cargo/bin:~/.local/bin:~/.ghcup/bin:~/.cabal/bin:/usr/local/bin:/usr/local/sbin:${PATH}
 
 export GOPATH=$HOME/.go
 export GO111MODULE=on
-export PATH=$PATH:$GOPATH/bin
+PATH=$PATH:$GOPATH/bin
 export XDG_CONFIG_HOME=$HOME/.config
 export PIP_DISABLE_PIP_VERSION_CHECK=1
 
@@ -36,5 +36,10 @@ export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
-export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 test -d $HOME/.cargo/env && . "$HOME/.cargo/env"
+
+PATH=$HOME/.claude/local:$PATH
+
+export PATH
+

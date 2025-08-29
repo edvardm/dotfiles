@@ -49,12 +49,10 @@ autoload -Uz compinit
 compinit
 
 # compdefs for aliases
-
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 compdef g=git
-# compdef kg='kubernetes get'
 compdef remake=make
-# compdef j=just
+compdef t=task
 # end of compdefs
 
 # stty -ixon # no xon/xoff
@@ -72,13 +70,24 @@ setopt HIST_BEEP
 
 setopt PROMPT_SUBST
 
-test -f ~/.poetry/env && source ~/.poetry/env
-
-# source $HOME/.config/broot/launcher/bash/br
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
-
 [ -f "${HOME}/.ghcup/env" ] && source "${HOME}/.ghcup/env"
+
+function sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
+}
+
+zle     -N             sesh-sessions
+bindkey -M emacs '\es' sesh-sessions
+bindkey -M vicmd '\es' sesh-sessions
+bindkey -M viins '\es' sesh-sessions
 
 eval "$(zoxide init zsh --cmd z)"
 
@@ -87,17 +96,9 @@ export NVM_DIR="$HOME/.nvm"
 
 source ~/Code/fzf-git.sh/fzf-git.sh
 
-eval "$(starship init zsh)"
-
-source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
-
-# eval "$(~/.local/bin/mise activate zsh)"
-
-test -f ~/work/aliases && . ~/work/aliases
 
 # complete ssh hosts by alias, not full hostname
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts
-
 
 # pnpm
 export PNPM_HOME="/Users/ed/Library/pnpm"
@@ -108,5 +109,14 @@ esac
 # pnpm end
 
 eval $(bob complete zsh)
-test -d ~/.claude && alias cl=~/.claude/local/claude
 
+eval "$(starship init zsh)"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/Users/ed/.opam/opam-init/init.zsh' ]] || source '/Users/ed/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration

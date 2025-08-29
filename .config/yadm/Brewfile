@@ -39,6 +39,7 @@ brew "starship"                 # Cross-shell prompt
 brew "atuin"                    # Sync shell history across machines
 brew "tmux"                     # Terminal multiplexer
 brew "tmuxp"                    # tmux session manager
+brew "sesh"                     # smart session manager (enhances tmux)
 
 # File & Directory Tools
 brew "bat"                      # Cat with syntax highlighting
@@ -193,7 +194,7 @@ cask "font-hasklig"             # Haskell ligatures font
 cask "font-meslo-lg-nerd-font"  # Meslo LG with icons
 
 # Other Applications
-cask "chalk"                    # Terminal string styling
+cask "chalk"                    # Good calculator
 cask "quarto"                   # Scientific publishing system
 cask "sweet-home3d"             # Interior design software
 
