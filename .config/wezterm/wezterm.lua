@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
-local dimmer = { brightness = 0.6 }
+local dimmer = { brightness = 0.8 }
 config.background = {
 	{
 		source = {
@@ -11,7 +11,7 @@ config.background = {
 		repeat_x = "NoRepeat",
 		repeat_y = "NoRepeat",
 		vertical_align = "Middle",
-		opacity = 0.97,
+		opacity = 0.80,
 		hsb = dimmer,
 	},
 }

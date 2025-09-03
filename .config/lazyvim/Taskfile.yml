@@ -1,6 +1,6 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
 tasks:
   luacheck:
@@ -18,6 +18,9 @@ tasks:
   lint:
     desc: Run all linting checks (luacheck + stylua)
     deps: [luacheck, stylua]
+
+  fmt:
+    deps: [stylua-fix]
 
   load-default-keymap:
     desc: loads default keymap from lazyvim repo
